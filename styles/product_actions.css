@@ -1,0 +1,167 @@
+@import url("product_activities_nav.css");
+
+.product_activities_hero{
+    width: 100%;
+    height: 25em;
+    background-color: #F6C00F;
+    z-index: -2;
+    padding-top: 8%;
+    box-sizing: border-box;
+}
+
+.product_activity_title{
+    font-family: 'bebas';
+    font-size: 3rem;
+    width: 100%;
+    text-align: center;
+    justify-self: center;
+}
+
+
+.product_activity_image{
+    height: 8em;
+    margin-left:45%;
+}
+
+.product_delivery_registration{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    font-size: 1.2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 0.5rem;
+}
+
+input{
+    height: 2.3em;
+    color: gray;
+    padding-left: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: solid #F6C00F 1px;
+}
+
+label.notifier{
+    color:red;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.p_quantity_delivery_number{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.product_quantity{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.product_delivery_number{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 2rem;
+}
+
+.number_value_button{
+    display: flex;
+    margin-top: 0.8rem;
+}
+
+.number_generator{
+    background-color: #F6C00F;
+    border: none;
+    height: 2em;
+    font-weight: bold;
+    margin-right: 1.2rem;
+}
+
+.number_value_placeholder{
+    background-color: whitesmoke;
+    padding: 0.3rem;
+    box-sizing: border-box;
+    font-size: 0.8rem;
+}
+
+label[for="receiver_email"]{
+    margin-top: 1rem;    
+}
+
+.p_img_upload_lb{
+    background-color: #F6C00F;
+    width: 7em;
+    padding: 0.3rem;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.product_upload_button{
+    height: 2em;
+    width: 5.5em;
+    margin-top: -4%;
+    opacity: 0;
+}
+
+.p_image_placeholder{
+    object-fit: contain;
+    width: 50%;
+    margin-left: 25%;
+}
+
+label[for="image_upload_notifier"]{
+    margin-top: 1rem;
+}
+
+.img_qr_code{
+    height: 12em;
+    object-fit: contain;
+}
+
+.print_qr_pdf{
+    padding: 1rem;
+    background-color: whitesmoke;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: solid #F6C00F 1px;
+    width: 20%;
+    margin-top: 1rem;
+}
+
+.product_delivery_submit_btn{
+    height: 3em;
+    border: none;
+    background-color: #F6C00F;
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 3em;
+    margin-bottom: 2.5em;
+    font-weight: bold;
+    font-size: 2rem;
+    font-size: 1.2rem;
+}
+
+.next_btn{
+    color: #F6C00F;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: right;
+    font-weight: bold;
+}
+
+
+.info_box{
+    margin-bottom: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(150, 150, 150);
+    text-align: justify;
+}
+.complaint_box{
+    height: 10em;
+}

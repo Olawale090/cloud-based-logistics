@@ -1,0 +1,77 @@
+html,body{
+    margin:0;
+}
+
+@font-face {
+    font-family: quicksand;
+    src: url("../assets/fonts/Quicksand-Regular.otf");
+}
+
+.comp_avatar{
+    width: 10%;
+}
+
+
+form{
+    display:flex;
+    flex-direction: column;
+}
+
+.signin_form{
+    width: 30%;
+    margin-left: 35%;
+}
+
+.form_title{
+    width: 30%;
+    margin-top: 5%;
+    margin-left: 35%;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #F6C00F;
+    font-family: quicksand;
+    font-size: larger;
+}
+
+label{
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: medium;
+}
+
+input{
+    height: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.signin_btn{
+    background-color: #636363;
+    color: hsl(0, 0%, 25%);
+    height: 2.5em;
+    font-weight: bold;
+    border: none;
+    font-size: medium;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sign_up_dir{
+    font-family: 'Segoe UI';
+    font-size: medium;
+}
+
+a{
+    text-decoration: none;
+    color: #F6C00F;
+}
+
+
+.form_auth_message{
+
+    font-family: 'Segoe UI';
+    font-size: medium;
+    color: red;
+    text-align: center;
+    margin-top: 2rem;
+
+}
