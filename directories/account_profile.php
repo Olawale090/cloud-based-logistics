@@ -7,8 +7,10 @@
 
     <link rel="shortcut icon" href="../assets/images/Group 49.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/product_actions.css">
+    <script async type="modules" src="../scripts/pipe.js"></script>
 
     <title>Account profile</title>
+    
 </head>
 
 <body>

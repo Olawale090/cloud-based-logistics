@@ -2,23 +2,25 @@
 
     session_start();
 
-    interface Isignup {
+    interface Iproduct_delivery_setup {
 
-        // public function props();
         public function database_connection();
         public function new_user_signup();
 
     }
 
-    class register_user implements Isignup
+    class setup_product implements Iproduct_delivery_setup
     {
         public function __construct() {
 
             $this->mysqli = new mysqli('localhost','root','','logistics');
-            $this->fullname = mysqli_real_escape_string($this->mysqli, $_POST['user_fullname']);
-            $this->email = mysqli_real_escape_string($this->mysqli, $_POST['user_email']);
-            $this->password = mysqli_real_escape_string($this->mysqli, $_POST['user_password']);
-            $this->confirm_password = mysqli_real_escape_string($this->mysqli, $_POST['user_confirm_password']);
+            $this->product_name = mysqli_real_escape_string($this->mysqli, $_POST['product_name']);
+            $this->product_category = mysqli_real_escape_string($this->mysqli, $_POST['product_category']);
+            $this->product_quantity = mysqli_real_escape_string($this->mysqli, $_POST['product_quantity']);
+            $this->product_delivery_number = mysqli_real_escape_string($this->mysqli, $_POST['product_delivery_number']);
+            $this->product_receiver_email = mysqli_real_escape_string($this->mysqli, $_POST['r_email']);
+            $this->product_picture = mysqli_real_escape_string($this->mysqli, $_POST['product_upload_button']);
+            $this->product_qrcode_dir = mysqli_real_escape_string($this->mysqli, $_POST['qr_code_string']);
 
         }
 
@@ -30,9 +32,10 @@
             }
         }
 
-        public function new_user_signup(){
+        public function new_product_setup(){
                 
-            if (!empty($this->fullname) && !empty($this->email) && !empty($this->password) && !empty($this->confirm_password)) {
+            if (!empty($this->product_name) && !empty($this->product_category) && !empty($this->product_quantity) && !empty($this->product_delivery_number) 
+                && !empty($this->product_receiver_email) && !empty($this->product_picture) && !empty($this->product_qrcode_dir)) {
                 
                 $username = strip_tags($this->fullname);
                 $email = filter_var($this->email, FILTER_VALIDATE_EMAIL);
@@ -94,7 +97,6 @@
     }
 
     $user_registration = new register_user();
-    // $user_registration->props();
     $user_registration->database_connection();
     $user_registration->new_user_signup();
 

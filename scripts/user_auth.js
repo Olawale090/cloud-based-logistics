@@ -6,39 +6,46 @@ const signin_authentication = function(){
     
     // signup parameters
    
-    this.user_email = document.querySelector(".signup_email");
-    this.user_password = document.querySelector(".signup_password");
-    this.user_signup_auth_message = document.querySelector(".signup_auth_message");
-    this.user_signup_submit_btn = document.querySelector(".signup_submit_button");
+    this.user_email = document.querySelector(".signin_email");
+    this.user_password = document.querySelector(".signin_password");
+    this.user_signin_auth_message = document.querySelector(".signin_auth_message");
+    this.user_signin_submit_btn = document.querySelector(".signin_btn");
+    
 };
 
-signup_authentication.prototype ={
+signin_authentication.prototype ={
    
     user_account_login(){
 
-        this.user_signup_submit_btn.addEventListener('click',(event)=>{
-            // console.log(this);
+        this.user_signin_submit_btn.addEventListener('click',(event)=>{
+
             event.preventDefault();
 
-            let params = 'user_fullname=' + this.user_fullname.value + '&user_email=' + this.user_email.value + '&user_password=' + this.user_password.value + '&user_confirm_password=' + this.user_confirm_password.value;
+            let params =  'user_signin_email=' + this.user_email.value + '&user_signin_password=' + this.user_password.value;
             const xhr = new XMLHttpRequest();
-            xhr.open('POST','../backend/authentication.php',true);
+            xhr.open('POST','./backend/user_signin_auth.php',true);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
             xhr.onload = ()=>{
                 if (xhr.status === 200) {
 
-                    this.user_signup_auth_message.innerHTML = xhr.responseText;
-                    console.warn(xhr.XMLHttpRequest);
+                    this.user_signin_auth_message.innerHTML = xhr.responseText;
+                    
+                    console.log(xhr.responseText);
+                    let extract = xhr.responseText.replace("\n","");
+                    console.log(extract);
+                    console.log(extract == xhr.responseText?true:false);
 
-                    // if (this.user_signup_auth_message.innerHTML == 'Form submitted successfuly') {
-                    //     this.user_signup_auth_message.style.color = "#4675f8";
-                    //     window.open('../links/login.html','Self');
-                    // }
+                    if (xhr.responseText == "Login successful") {
+                        this.user_signup_auth_message.style.color = "#4675f8";
+                        window.open('./directories/account_profile.html','Self');
+                        console.log("working...");
+                    }
 
                 } else if(xhr.status === 404) {
 
-                    alert("page not found");
+                   window.open("../directories/pagenotfound.php","Self");
+                   console.error("PAGE NOT FOUND");
 
                 }
                 
@@ -54,5 +61,5 @@ signup_authentication.prototype ={
 
 }
 
-let auth = new signup_authentication();
-auth.user_registration();
+let auth = new signin_authentication();
+auth. user_account_login();

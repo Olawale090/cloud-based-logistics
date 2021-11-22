@@ -36,7 +36,7 @@
 
         <div class="sign_dir"> Already have an account? 
         
-            <a href="signin.html" class="sign_up_redirect"> Sign in </a>
+            <a href="./directories/signin.php" class="sign_up_redirect"> Sign in </a>
 
         </div>
 

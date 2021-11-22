@@ -1,0 +1,28 @@
+/* body{
+    background-image: url('../assets/images/Group\ 178.png');
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-blend-mode:
+} */
+@font-face {
+    font-family: josefin;
+    src: url("../assets/fonts/JosefinSans-Regular.ttf");
+}
+.message_container{
+    font-family: bebas;
+    font-size: 10rem;
+    color: white;
+    text-align: center;
+    margin-top: 10rem;
+    width: 100%;
+    background-color: #F6C00F;
+}
+
+
+.hint_container{
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: josefin;
+    color: #000000;
+}

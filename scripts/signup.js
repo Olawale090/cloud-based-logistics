@@ -18,7 +18,6 @@ signup_authentication.prototype ={
     user_registration(){
 
         this.user_signup_submit_btn.addEventListener('click',(event)=>{
-            // console.log(this);
             event.preventDefault();
 
             let params = 'user_fullname=' + this.user_fullname.value + '&user_email=' + this.user_email.value + '&user_password=' + this.user_password.value + '&user_confirm_password=' + this.user_confirm_password.value;
@@ -30,14 +29,12 @@ signup_authentication.prototype ={
                 if (xhr.status === 200) {
 
                     this.user_signup_auth_message.innerHTML = xhr.responseText;
-                    console.log(xhr.responseText);
+                    
 
-                    if (this.user_signup_auth_message.innerHTML == "Form submitted successfuly") {
-                        this.user_signup_auth_message.style.color = "#4675f8";
+                    if ( xhr.responseText == "Form submitted successfuly" ) {
+                           
                         window.open('../directories/signin.html','Self');
-                        alert("working...");
-                    }else if(this.user_signup_auth_message.innerHTML !== "Form submitted successfuly"){
-                        alert("error somewhere");
+
                     }
 
                 } else if(xhr.status === 404) {
