@@ -10,6 +10,7 @@
     <script async type="module" src="../scripts/pipe.js"></script>
 
     <title>Dashboard</title>
+
 </head>
 <body>
     
@@ -21,7 +22,7 @@
         
         <div class="right_float">
             <li class="profile_username">Username</li>
-            <img src="../assets/images/e0e69226-9ff0-4e4e-a0fe-5ad8555a07e8.jpg" alt="u_avatar" class="avatar u_avatar">
+            <img src="../assets/images/033-user.svg" alt="u_avatar" class="avatar u_avatar">
         </div>
         
     </div>

@@ -14,6 +14,7 @@
         public function __construct() {
 
             $this->mysqli = new mysqli('localhost','root','','logistics');
+            // $this->mysqli = new mysqli('sql104.epizy.com','epiz_30360932','nRfYOoLRfnNnxl','epiz_30360932_logistics');
             $this->email = mysqli_real_escape_string($this->mysqli, $_POST['user_signin_email']);
             $this->password = mysqli_real_escape_string($this->mysqli, $_POST['user_signin_password']);
 
@@ -45,10 +46,12 @@
                         $customer_passQuery_data = $customer_exist_passQuery->fetch_array(MYSQLI_ASSOC);
 
                         if ($customer_passQuery_data) {
-                            
-                                echo "Login successful"; 
+
                                 $_SESSION["user_name"] = $customer_passQuery_data["fullname"];
-                            
+                                $_SESSION["user_avatar"] = $customer_passQuery_data["user_image_dir"];
+                                
+                                echo "Login successful"; 
+                    
                         }else {
 
                             echo "Wrong email or password ";

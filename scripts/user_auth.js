@@ -10,6 +10,8 @@ const signin_authentication = function(){
     this.user_password = document.querySelector(".signin_password");
     this.user_signin_auth_message = document.querySelector(".signin_auth_message");
     this.user_signin_submit_btn = document.querySelector(".signin_btn");
+
+    this.loader = document.querySelector(".form_loader");
     
 };
 
@@ -21,30 +23,47 @@ signin_authentication.prototype ={
 
             event.preventDefault();
 
+            // console.dir(this.user_signin_auth_message);
+
             let params =  'user_signin_email=' + this.user_email.value + '&user_signin_password=' + this.user_password.value;
             const xhr = new XMLHttpRequest();
             xhr.open('POST','./backend/user_signin_auth.php',true);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
+            xhr.onloadstart = ()=>{
+
+                this.loader.style.display = "block";
+                
+            };
+
+            xhr.onloadend = ()=>{
+
+                this.loader.style.display = "none";
+                
+            };
+
+
             xhr.onload = ()=>{
                 if (xhr.status === 200) {
+                    try {
+                        this.user_signin_auth_message.innerHTML = xhr.responseText;
 
-                    this.user_signin_auth_message.innerHTML = xhr.responseText;
-                    
-                    console.log(xhr.responseText);
-                    let extract = xhr.responseText.replace("\n","");
-                    console.log(extract);
-                    console.log(extract == xhr.responseText?true:false);
+                        if (xhr.responseText.indexOf("Login successful") > -1) {
 
-                    if (xhr.responseText == "Login successful") {
-                        this.user_signup_auth_message.style.color = "#4675f8";
-                        window.open('./directories/account_profile.html','Self');
-                        console.log("working...");
+                            this.user_signin_auth_message.style.color = "#4675f8";
+                            window.open('./directories/dashboard.php','_Self');
+
+                        }
+
+                    } catch (error) {
+
+                        console.error("ERROR OCCURED WHILE GETTING RESPONSE", error);
+
                     }
-
+                    
                 } else if(xhr.status === 404) {
 
-                   window.open("../directories/pagenotfound.php","Self");
+                   window.open("./directories/pagenotfound.php","_Self");
                    console.error("PAGE NOT FOUND");
 
                 }

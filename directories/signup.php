@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="shortcut icon" href="../assets/images/Group 49.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/form.css">
+    <link rel="stylesheet" href="../styles/loader.css">
+
     <script async type="module" src="../scripts/signup.js"></script>
+    
+
     <title>Sign up</title>
+
 </head>
 <body>
 
@@ -36,13 +43,15 @@
 
         <div class="sign_dir"> Already have an account? 
         
-            <a href="./directories/signin.php" class="sign_up_redirect"> Sign in </a>
+            <a href="../index.php" class="sign_up_redirect"> Sign in </a>
 
         </div>
 
         <div class="form_auth_message signup_auth_message">
             <!-- Please enter valid email or Password -->
         </div>
+
+        <div class="form_loader"></div>
 
     </form>
 </body>

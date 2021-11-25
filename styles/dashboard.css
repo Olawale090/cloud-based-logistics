@@ -35,14 +35,13 @@ li{
 .right_float{
     display: flex;
     flex-direction: row;
-    float: right;
-    margin-left: 80%;
+    justify-content: flex-end;
     position: relative;
 }
 
 .left_float,.right_float{
     margin-top: 0.5rem;
-    width: auto;
+    width: 50%;
 }
 
 .u_avatar{

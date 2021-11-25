@@ -1,0 +1,27 @@
+.form_loader{
+    width: 2em;
+    height: 2em;
+    margin-left: calc(calc(100% - 50%) - 2em);
+    background-color: seagreen;
+    animation-name: loader;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function:ease-in-out;
+    animation-fill-mode: both;
+    animation-direction:normal;
+    display: none;
+}
+
+@keyframes loader {
+    from{
+        background-color: rgb(40, 230, 113);
+        transform: rotate(0deg);
+        
+    }
+
+    to{
+        background-color: #F6C00F;
+        transform: rotate(360deg);
+    }
+}
+

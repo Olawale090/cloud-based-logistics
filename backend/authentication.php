@@ -15,6 +15,7 @@
         public function __construct() {
 
             $this->mysqli = new mysqli('localhost','root','','logistics');
+            // $this->mysqli = new mysqli('sql104.epizy.com','epiz_30360932','nRfYOoLRfnNnxl','epiz_30360932_logistics');
             $this->fullname = mysqli_real_escape_string($this->mysqli, $_POST['user_fullname']);
             $this->email = mysqli_real_escape_string($this->mysqli, $_POST['user_email']);
             $this->password = mysqli_real_escape_string($this->mysqli, $_POST['user_password']);
@@ -44,20 +45,27 @@
                     if ($username && $email && $password) {
 
                         $customer_exist_query = "SELECT * FROM sign_up 
-                                                 WHERE email = '$email'
-                                                ";
+                                                 WHERE email = '$email'; ";
 
                         $customer_exist_passQuery = $this->mysqli->query($customer_exist_query, MYSQLI_USE_RESULT);
                         $customer_passQuery_data = $customer_exist_passQuery->fetch_array(MYSQLI_ASSOC);
 
-                        if ($customer_passQuery_data['email'] === $email) {
+                        // $x = substr($customer_passQuery_data['email'],0,20);
+                        // $y = substr($email,0,20);
 
-                                echo "This account already exist, please login."; 
+                        // if($x == $y){
+                        //     echo "working";
+                        // }
+
+                        // echo substr_compare($customer_passQuery_data['email'],$email,0,20);
+
+                        if (substr_compare($customer_passQuery_data['email'],$email,0,20) > -1) {
+
+                                echo " This account already exist, please login. "; 
 
                         }else{
 
                             $query = "INSERT INTO sign_up(fullname,email,user_password)
-
                                       VALUES ( '$username', '$email ','$password');";
 
                             $passQuery = $this->mysqli->query($query, MYSQLI_USE_RESULT);
@@ -66,7 +74,7 @@
 
                                 mkdir("../customer/".$username."-".$email);
                                 echo "Form submitted successfuly";
-                                // $_SESSION["user_name"] =  $username;
+                                $_SESSION["user_name"] =  $username;
 
                             } else {
 

@@ -11,6 +11,9 @@ const signup_authentication = function(){
     this.user_confirm_password = document.querySelector(".signup_confirm_password");
     this.user_signup_auth_message = document.querySelector(".signup_auth_message");
     this.user_signup_submit_btn = document.querySelector(".signup_submit_button");
+
+    this.loader = document.querySelector(".form_loader");
+
 };
 
 signup_authentication.prototype ={
@@ -25,28 +28,50 @@ signup_authentication.prototype ={
             xhr.open('POST','../backend/authentication.php',true);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
+            xhr.onloadstart = ()=>{
+
+                this.loader.style.display = "block";
+                
+            };
+
+            xhr.onloadend = ()=>{
+
+                this.loader.style.display = "none";
+                
+            };
+
+
+
             xhr.onload = ()=>{
                 if (xhr.status === 200) {
+                    try {
 
-                    this.user_signup_auth_message.innerHTML = xhr.responseText;
-                    
+                            this.user_signup_auth_message.innerHTML = xhr.responseText;
 
-                    if ( xhr.responseText == "Form submitted successfuly" ) {
-                           
-                        window.open('../directories/signin.html','Self');
+                            if (xhr.responseText.indexOf("Form submitted successfuly") > -1) {
+                                
+                                window.open('../','_Self');
+
+                            }
+
+                    } catch (error) {
+
+                        console.error("ERROR GETTING RESPONSE: ", error);
 
                     }
+                    
 
                 } else if(xhr.status === 404) {
 
-                    alert("page not found");
+                    window.open("../directories/pagenotfound.php","_Self");
+                    console.error("PAGE NOT FOUND");
 
                 }
                 
             };
 
             xhr.onerror = (err)=>{
-                alert(err);
+                console.error("ERROR WHILE GETTING RESPONSE ",err);
             };
 
             xhr.send(params);
