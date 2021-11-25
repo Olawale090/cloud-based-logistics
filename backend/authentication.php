@@ -57,7 +57,7 @@
                         //     echo "working";
                         // }
 
-                        // echo substr_compare($customer_passQuery_data['email'],$email,0,20);
+                        // echo substr_compare($customer_passQuery_data['email'],$email,0,strlen($customer_passQuery_data['email']));
 
                         if (substr_compare($customer_passQuery_data['email'],$email,0,20) > -1) {
 
@@ -72,9 +72,10 @@
 
                             if ($passQuery) {
 
-                                mkdir("../customer/".$username."-".$email);
                                 echo "Form submitted successfuly";
+
                                 $_SESSION["user_name"] =  $username;
+                                $_SESSION["user_avatar_dir"] = mkdir("../customer/".$username."-".$email);
 
                             } else {
 
@@ -102,7 +103,6 @@
     }
 
     $user_registration = new register_user();
-    // $user_registration->props();
     $user_registration->database_connection();
     $user_registration->new_user_signup();
 

@@ -50,7 +50,7 @@ signin_authentication.prototype ={
 
                         if (xhr.responseText.indexOf("Login successful") > -1) {
 
-                            this.user_signin_auth_message.style.color = "#4675f8";
+                            this.user_signin_auth_message.style.color = "rgb(40, 230, 113)";
                             window.open('./directories/dashboard.php','_Self');
 
                         }
@@ -71,7 +71,7 @@ signin_authentication.prototype ={
             };
 
             xhr.onerror = (err)=>{
-                alert(err);
+                console.error("ERROR IN MAKING SERVER REQUEST",err);
             };
 
             xhr.send(params);

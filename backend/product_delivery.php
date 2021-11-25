@@ -5,7 +5,7 @@
     interface Iproduct_delivery_setup {
 
         public function database_connection();
-        public function new_user_signup();
+        public function new_product_setup();
 
     }
 

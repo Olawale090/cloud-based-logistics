@@ -2,18 +2,46 @@
 
     session_start();
 
-    $username = $_SESSION["user_name"];
-    $user_avatar = $_SESSION["user_avatar"];
+    class load_user_data
+    {
+        public function __construct() {
 
-    if ($username == $_SESSION["user_name"]) {
+            $this->mysqli = new mysqli('localhost','root','','logistics');
+        }
 
-        echo $_SESSION["user_name"];
+        public function database_connection(){
+            if (mysqli_connect_errno()) {
+                
+                echo " Connection failed, please try again ";
 
-    } else {
+            }
+        }
 
-        echo "Fullname";
+        public function user_data_pipe(){
 
+            $piped_mail =  $_SESSION["user_email"];
+
+            $customer_data_query = "SELECT * FROM sign_up 
+                                    WHERE email = '$piped_mail'; ";
+
+            $customer_data_passQuery = $this->mysqli->query( $customer_data_query, MYSQLI_USE_RESULT);
+            $customer_data_fetch = $customer_data_passQuery->fetch_array(MYSQLI_ASSOC);
+
+            if ($customer_data_fetch) {
+
+                    echo json_encode($customer_data_fetch); 
+
+            }
+
+        }
+     
     }
+
+
+    $user_data_pipeline = new load_user_data();
+    $user_data_pipeline->database_connection();
+    $user_data_pipeline->user_data_pipe();
+        
     
 ?>
 

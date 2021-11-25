@@ -10,6 +10,7 @@
     animation-fill-mode: both;
     animation-direction:normal;
     display: none;
+    margin-bottom: 2em;
 }
 
 @keyframes loader {

@@ -41,7 +41,7 @@
 
     <div class="menu_tabs">
 
-        <a href="../directories/product_delivery.html" class="menu_links">
+        <a href="../directories/product_delivery.php" class="menu_links">
         
             <div class="menu">
 
@@ -52,7 +52,7 @@
         
         </a>
        
-        <a href="../directories/product_pick_up.html" class="menu_links">
+        <a href="../directories/product_pick_up.php" class="menu_links">
         
             <div class="menu menu2">
 
@@ -63,7 +63,7 @@
 
         </a>
         
-        <a href="../directories/agent_verification.html" class="menu_links">
+        <a href="../directories/agent_verification.php" class="menu_links">
         
             <div class="menu">
 
@@ -74,7 +74,7 @@
         
         </a>
         
-        <a href="../directories/account_profile.html" class="menu_links">
+        <a href="../directories/account_profile.php" class="menu_links">
         
             <div class="menu">
 
@@ -86,7 +86,7 @@
         </a>
         
 
-        <a href="../directories/order_verification.html" class="menu_links">
+        <a href="../directories/order_verification.php" class="menu_links">
             <div class="menu">
 
                 <img src="../assets/images/005-call.svg" class="menu_images" alt="Product delivery">
@@ -95,7 +95,7 @@
             </div>
         </a>
         
-        <a href="../directories/fraud_awareness.html" class="menu_links">
+        <a href="../directories/fraud_awareness.php" class="menu_links">
         
             <div class="menu">
 

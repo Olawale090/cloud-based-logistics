@@ -7,7 +7,10 @@
 
     <link rel="shortcut icon" href="../assets/images/Group 49.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/product_actions.css">
-    <script async type="modules" src="../scripts/pipe.js"></script>
+    <link rel="stylesheet" href="../styles/loader.css">
+
+    <!-- <script async type="module" src="../scripts/pipe.js"></script> -->
+    <script async type="module" src="../scripts/account_profile.js"></script>
 
     <title>Account profile</title>
     
@@ -16,29 +19,30 @@
 <body>
     
     <div class="nav_panel">
+
         <div class="left_float">
             <img src="../assets/images/Group 145 copy.svg" alt="c_avatar" class="avatar">
         </div>
         
         <div class="right_float">
             <li class="profile_tabs verify_agent">
-                <a href="../directories/agent_verification.html" class="picking_dir"> Verify Agent </a> 
+                <a href="../directories/agent_verification.php" class="picking_dir"> Verify Agent </a> 
             </li>
 
             <li class="profile_tabs picking_product">
-                <a href="../directories/product_pick_up.html" class="picking_dir"> Picking product </a>
+                <a href="../directories/product_pick_up.php" class="picking_dir"> Picking product </a>
             </li>
 
             <li class="profile_tabs fraud_awareness">
-                <a href="../directories/fraud_awareness.html" class="picking_dir"> Fraud awareness </a>
+                <a href="../directories/fraud_awareness.php" class="picking_dir"> Fraud awareness </a>
             </li>
 
             <li class="profile_tabs dashboard">
-                <a href="../directories/dashboard.html" class="picking_dir"> Dashboard </a>
+                <a href="../directories/dashboard.php" class="picking_dir"> Dashboard </a>
             </li>
 
 
-            <li class="profile_tabs username">Username</li>
+            <li class="profile_tabs profile_username username"> Username </li>
             <img src="../assets/images/e0e69226-9ff0-4e4e-a0fe-5ad8555a07e8.jpg" alt="u_avatar" class="avatar u_avatar">
         </div>
         
@@ -49,41 +53,41 @@
         <div class="product_activity_title">
             Account profile
         </div>
+
         <img src="../assets/images/033-user.svg" alt="action_image" class="product_activity_image">
             
     </div>
 
     <form action="" method="post" class="product_delivery_registration">
 
-        <label for="p_name">First name</label>
-        <input type="text" placeholder="Please enter first name" class="product_name" >
+        <label for="p_name">Full name</label>
+        <input type="text" placeholder="Please enter full name" class="product_name user_fullname" name="user_fullname">
         <label for="p_name_notifier" class="p_name_error_notifier notifier">Please enter your first name</label>
 
-        <label for="P_category"> Last name </label>
-        <input type="text" placeholder="Please enter your last name" class="product_category">
-        <label for="p_category_notifier" class="p_category_error_notifier notifier"> Please enter your last name </label>
+        <label for="user_email"> Email </label>
+        <input type="text" placeholder="Please enter email" class="u_email" name="user_email">
+        <label for="u_email_notifier" class="u_email_error_notifier notifier"> Please enter email </label>
 
-        <label for="receiver_email"> Email </label>
-        <input type="text" placeholder="Please enter email" class="r_email">
-        <label for="r_email_notifier" class="r_email_error_notifier notifier"> Please enter email </label>
-
-        <label for="receiver_email"> Private PIN </label>
-        <input type="text" placeholder="Please your private pin" class="r_email">
-        <label for="r_email_notifier" class="r_email_error_notifier notifier"> Please private PIN </label>
+        <label for="user_PIN"> Private PIN </label>
+        <input type="text" placeholder="Please your private pin" class="user_PIN" name="user_PIN">
+        <label for="user_PIN_notifier" class="user_PIN_error_notifier notifier"> Please private PIN </label>
+        
         <div class="PIN_details" style="background-color:whitesmoke;color:gray; padding: 1rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; width: 50%; margin-bottom: 2rem;">
-            This PIN(personal identification number) is to avoid account hijacking, manipulations and blocking.
+            This PIN( Personal Identification Number) is to avoid account hijacking, manipulations and blocking.
         </div>
 
         <label for="p_image_upload"> Upload your profile image </label>
         <label for="upload" class="p_img_upload_lb"> Select image </label> 
-        <input type="file" placeholder="Select image" class="product_upload_button"> 
+        <input type="file" placeholder="Select image" name="user_avatar_upload_btn" class="product_upload_button image_selector">
         
 
-        <img src="../assets/images/033-user.svg" height="200px" alt="" class="p_image_placeholder">
+        <img src="../assets/images/033-user.svg" height="200px" alt="user-avatar" class="p_image_placeholder user_image_placeholder">
 
         <label for="image_upload_notifier" class="p_image_upload_notifier notifier"> Please select image to upload </label>
 
-        <button name="" class="product_delivery_submit_btn"> Submit </button>
+        <button name="" class="product_delivery_submit_btn account_submit_btn"> Submit </button>
+
+        <div class="form_loader"></div>
 
     </form>
 

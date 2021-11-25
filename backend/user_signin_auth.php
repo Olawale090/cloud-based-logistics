@@ -49,6 +49,7 @@
 
                                 $_SESSION["user_name"] = $customer_passQuery_data["fullname"];
                                 $_SESSION["user_avatar"] = $customer_passQuery_data["user_image_dir"];
+                                $_SESSION["user_email"] = $email;
                                 
                                 echo "Login successful"; 
                     

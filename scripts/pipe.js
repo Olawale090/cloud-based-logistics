@@ -2,7 +2,7 @@
 
 // using ES5 structural design pattern to creating objects and API interaction
 
-const load_user = function(){
+export const load_user = function(){
     
     // signup parameters
    
@@ -28,8 +28,21 @@ load_user.prototype ={
             xhr.onload = ()=>{
                 if (xhr.status === 200) {
 
-                    this.username.innerHTML = xhr.responseText;
-                    console.log(xhr);
+                    let data_parser = JSON.parse(xhr.responseText);
+
+                    this.username.innerHTML = data_parser.fullname;
+
+                    if (data_parser.user_image_dir == null) {
+
+                        this.user_avatar.src = "../assets/images/033-user.svg";
+
+                    } else {
+
+                        this.user_avatar.src = `${data_parser.user_image_dir}`;
+
+                    }
+
+                    console.log(data_parser);
 
                 } else if(xhr.status === 404) {
 
