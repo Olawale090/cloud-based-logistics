@@ -5,6 +5,8 @@
 
 const account_profile = function(){
 
+    this.form = document.querySelector('.user_profile_account');
+
     this.username = document.querySelector(".profile_username");
     this.fullname = document.querySelector(".user_fullname");
     this.email = document.querySelector(".u_email");
@@ -94,21 +96,64 @@ account_profile.prototype ={
 
     },
 
+    account_image_update(){
+
+        this.fileBtn.addEventListener('change',(event)=>{
+
+            event.preventDefault();
+            
+            const params = 'user_avatar_upload_btn';
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST','../backend/user_picture_upload.php',true);
+            xhr.setRequestHeader("Content-Type", "multipart/form-data");
+
+            // xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+            xhr.onload = ()=>{
+
+                if (xhr.status === 200) {
+
+                    this.form_notifier.innerHTML = xhr.responseText;
+                    console.log(xhr.responseText);
+
+                } else if(xhr.status === 404) {
+
+                    console.error("DATA PIPE NOT FOUND");
+
+                }
+                
+            };
+
+            xhr.onerror = (err)=>{
+
+                console.error("ERROR IN SERVER RESPONSE",err);
+
+            };
+
+            xhr.send(params);
+
+        },false);
+
+    },
 
     account_profile_update(){
 
         this.user_account_submit_btn.addEventListener('click',(event)=>{
 
             event.preventDefault();
-            console.log(this.fullname.value);
-            console.log(this.email.value);
-            console.log(this.private_PIN.value);
             
-            const params = 'user_fullname='+this.fullname.value + '&user_email='+this.email.value + '&user_PIN='+this.private_PIN.value + '&user_avatar_upload_btn=';
+            const params = 'user_fullname='+this.fullname.value + '&user_email='+this.email.value + '&user_PIN='+this.private_PIN.value + '&user_avatar_upload_btn';
 
             const xhr = new XMLHttpRequest();
             xhr.open('POST','../backend/account_profile_setup.php',true);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+            // let form_data_holder = new FormData();
+            // form_data_holder.append("user_fullname",this.fullname.value);
+            // form_data_holder.append("user_email",this.email.value);
+            // form_data_holder.append("user_PIN",this.private_PIN.value);
+            // form_data_holder.append("user_avatar_upload_btn",this.fileBtn.files[0]);
 
             xhr.onload = ()=>{
 
@@ -143,3 +188,4 @@ let account_profile_setup = new account_profile();
     account_profile_setup.select_user_image();
     account_profile_setup.load_user_data();
     account_profile_setup.account_profile_update();
+    account_profile_setup.account_image_update();

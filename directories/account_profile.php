@@ -58,7 +58,7 @@
             
     </div>
 
-    <form enctype="multipart/form-data" action="" method="post" class="product_delivery_registration">
+    <form enctype="multipart/form-data" action="" method="post" class="product_delivery_registration user_profile_account">
 
         <label for="p_name">Full name</label>
         <input type="text" placeholder="Please enter full name" class="product_name user_fullname" name="user_fullname">

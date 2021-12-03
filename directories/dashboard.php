@@ -1,15 +1,3 @@
-<?php 
-
-    // session_start();
-    // if ($_SESSION["user_email"] == "" || $_SESSION["user_email"] == null) {
-        
-    //     header('Location:'.'../');
-
-    // }
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

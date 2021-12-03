@@ -74,19 +74,21 @@
 
                                 echo "Form submitted successfuly";
 
-                                $_SESSION["user_name"] =  $username;
                                 $picture_dir = mkdir("../customer/".$username."-".$email);
-                                // $_SESSION["user_avatar_dir"] = mkdir("../customer/".$username."-".$email);
+                                $picture_dir_text = "../customer/".$username."-".$email;
+                                $_SESSION["user_avatar_dir_text"] = $picture_dir_text;
+
+                                // echo $picture_dir_text;
 
                                 // $picture_dir = $_SESSION["user_avatar_dir"];
 
-                                $update_customer_query = "  UPDATE sign_up
+                                $update_img_dir_query = "   UPDATE sign_up
 
-                                                            SET user_img_dir = '$picture_dir' 
+                                                            SET user_img_dir = '$picture_dir_text' 
 
                                                             WHERE email = '$email'";
 
-                                $update_customer_passQuery = $this->mysqli->query($update_customer_query, MYSQLI_USE_RESULT);
+                                $update_img_dir_passQuery = $this->mysqli->query($update_img_dir_query, MYSQLI_USE_RESULT);
 
 
                             } else {
