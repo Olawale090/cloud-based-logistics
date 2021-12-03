@@ -58,19 +58,19 @@
             
     </div>
 
-    <form action="" method="post" class="product_delivery_registration">
+    <form enctype="multipart/form-data" action="" method="post" class="product_delivery_registration">
 
         <label for="p_name">Full name</label>
         <input type="text" placeholder="Please enter full name" class="product_name user_fullname" name="user_fullname">
-        <label for="p_name_notifier" class="p_name_error_notifier notifier">Please enter your first name</label>
+        <!-- <label for="p_name_notifier" class="p_name_error_notifier notifier">Please enter your first name</label> -->
 
         <label for="user_email"> Email </label>
         <input type="text" placeholder="Please enter email" class="u_email" name="user_email">
-        <label for="u_email_notifier" class="u_email_error_notifier notifier"> Please enter email </label>
+        <!-- <label for="u_email_notifier" class="u_email_error_notifier notifier"> Please enter email </label> -->
 
         <label for="user_PIN"> Private PIN </label>
         <input type="text" placeholder="Please your private pin" class="user_PIN" name="user_PIN">
-        <label for="user_PIN_notifier" class="user_PIN_error_notifier notifier"> Please private PIN </label>
+        <!-- <label for="user_PIN_notifier" class="user_PIN_error_notifier notifier"> Please private PIN </label> -->
         
         <div class="PIN_details" style="background-color:whitesmoke;color:gray; padding: 1rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; width: 50%; margin-bottom: 2rem;">
             This PIN( Personal Identification Number) is to avoid account hijacking, manipulations and blocking.
@@ -78,14 +78,17 @@
 
         <label for="p_image_upload"> Upload your profile image </label>
         <label for="upload" class="p_img_upload_lb"> Select image </label> 
+        
         <input type="file" placeholder="Select image" name="user_avatar_upload_btn" class="product_upload_button image_selector">
         
 
         <img src="../assets/images/033-user.svg" height="200px" alt="user-avatar" class="p_image_placeholder user_image_placeholder">
 
-        <label for="image_upload_notifier" class="p_image_upload_notifier notifier"> Please select image to upload </label>
+        <!-- <label for="image_upload_notifier" class="p_image_upload_notifier notifier"> Please select image to upload </label> -->
 
         <button name="" class="product_delivery_submit_btn account_submit_btn"> Submit </button>
+
+        <label for="user_PIN_notifier" class="notifier form_notifier" style ="text-align:center; font-size:1rem;">  </label>
 
         <div class="form_loader"></div>
 

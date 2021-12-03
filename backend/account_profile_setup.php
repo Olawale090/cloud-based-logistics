@@ -4,6 +4,7 @@
     interface Iaccount_profile_update {
         public function database_connection();
         public function user_account_update();
+        public function user_upload_pic();
     }
 
     class account_profile_update implements Iaccount_profile_update
@@ -11,10 +12,9 @@
         public function __construct(){
 
             $this->mysqli = new mysqli('localhost','root','','logistics');
-            $this->username = mysqli_real_escape_string($this->mysqli,$_POST['username']);
+            $this->fullname = mysqli_real_escape_string($this->mysqli,$_POST['user_fullname']);
             $this->email = mysqli_real_escape_string($this->mysqli, $_POST['user_email']);
             $this->private_PIN = mysqli_real_escape_string($this->mysqli, $_POST['user_PIN']);
-            $this->image_file = $_FILES['user_avatar_upload_btn'];
             
         }
 
@@ -25,22 +25,30 @@
         }
 
         public function user_account_update(){
-                    
-                $username = strip_tags($this->username);
-                $email = filter_var($this->email, FILTER_VALIDATE_EMAIL);
+
+            if (!empty($this->fullname) && !empty($this->email)){
+
+                $username = strip_tags($this->fullname);
+                $logged_email = filter_var($this->email, FILTER_VALIDATE_EMAIL);
                 $pin = strip_tags($this->private_PIN);
 
-                $update_customer_query = "UPDATE signup
+                $log_mail = $this->email;
+
+                $update_customer_query = "UPDATE sign_up
 
                                           SET fullname = '$username', 
-                                              email = '$email', 
-                                              private_pin = '$pin',
+                                              email = '$log_mail', 
+                                              private_pin = '$pin'
 
-                                          WHERE email = '$email'";
+                                          WHERE email = '$log_mail'";
 
-                $update_customer_passQuery = $this->mysqli->query($customer_exist_query, MYSQLI_USE_RESULT);
+                $update_customer_passQuery = $this->mysqli->query($update_customer_query, MYSQLI_USE_RESULT);
 
-                $_SESSION["user_email"] = $email;
+                // echo  $log_mail . " after query ";
+                // echo $username;
+                // echo $pin;
+
+                // $_SESSION["user_email"] = $email;
                 
                 if ( $update_customer_passQuery) {
                     
@@ -50,20 +58,30 @@
 
                     echo ' Data update failed, please try again. ';
                 }
+
+
+
+            }else {
+                echo " Full name and Email can not be empty ";
+            }
+                
      
         }
 
         public function user_upload_pic(){
             
-            $filename = $this->image_file['name'];
-            $filesize = $this->image_file['size'];
-            $filetemp = $this->image_file['tmp_name'];
+            $filename = $_FILES['user_avatar_upload_btn']['name'];
+            $filesize = $_FILES['user_avatar_upload_btn']['size'];
+            $filetemp = $_FILES['user_avatar_upload_btn']['tmp_name'];
 
-            $cutomer_pic_path = $_SESSION["user_avatar_dir"];
+            $customer_pic_path = $_SESSION["user_avatar_dir"];
+            echo $customer_pic_path;
             
             if ($filesize < 2000000) {
 
                 $upload = move_uploaded_file($filetemp,$customer_pic_path.'/'.$filename);
+
+                echo $upload;
 
                 if ($upload == 1) {
                     

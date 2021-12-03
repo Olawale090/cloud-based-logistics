@@ -16,6 +16,8 @@ const account_profile = function(){
 
     this.user_avatar = document.querySelector(".u_avatar");
 
+    this.form_notifier = document.querySelector(".form_notifier");
+
     // this.loader = document.querySelector(".form_loader");
     
 };
@@ -37,6 +39,7 @@ account_profile.prototype ={
 
             });
     },
+
 
     load_user_data(){
 
@@ -91,16 +94,44 @@ account_profile.prototype ={
 
     },
 
+
     account_profile_update(){
 
-        this.user_account_submit_btn('click',(event)=>{
+        this.user_account_submit_btn.addEventListener('click',(event)=>{
 
             event.preventDefault();
-            const params = 'user_fullname='+this.username.value + '&user_email=' + this.email.value + '&user_PIN=' + this.private_PIN.value;
+            console.log(this.fullname.value);
+            console.log(this.email.value);
+            console.log(this.private_PIN.value);
+            
+            const params = 'user_fullname='+this.fullname.value + '&user_email='+this.email.value + '&user_PIN='+this.private_PIN.value + '&user_avatar_upload_btn=';
 
             const xhr = new XMLHttpRequest();
-            xhr.open('GET','../backend/account_profile_setup.php',true);
+            xhr.open('POST','../backend/account_profile_setup.php',true);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+            xhr.onload = ()=>{
+
+                if (xhr.status === 200) {
+
+                    this.form_notifier.innerHTML = xhr.responseText;
+                    console.log(xhr.responseText);
+
+                } else if(xhr.status === 404) {
+
+                    console.error("DATA PIPE NOT FOUND");
+
+                }
+                
+            };
+
+            xhr.onerror = (err)=>{
+
+                console.error("ERROR IN SERVER RESPONSE",err);
+
+            };
+
+            xhr.send(params);
 
         },false);
 
@@ -111,3 +142,4 @@ account_profile.prototype ={
 let account_profile_setup = new account_profile();
     account_profile_setup.select_user_image();
     account_profile_setup.load_user_data();
+    account_profile_setup.account_profile_update();

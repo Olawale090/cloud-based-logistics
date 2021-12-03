@@ -5,11 +5,9 @@
 export const load_user = function(){
     
     // signup parameters
-   
     this.username = document.querySelector(".profile_username");
     this.user_avatar = document.querySelector(".u_avatar");
-    // this.user_signin_auth_message = document.querySelector(".signin_auth_message");
-    // this.user_signin_submit_btn = document.querySelector(".signin_btn");
+
 };
 
 load_user.prototype ={
@@ -41,8 +39,6 @@ load_user.prototype ={
                         this.user_avatar.src = `${data_parser.user_image_dir}`;
 
                     }
-
-                    console.log(data_parser);
 
                 } else if(xhr.status === 404) {
 
