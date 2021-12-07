@@ -11,6 +11,7 @@
         public function __construct(){
 
             $this->mysqli = new mysqli('localhost','root','','logistics');
+            // $this->email = mysqli_real_escape_string($this->mysqli, $_POST['user_email']);
             
         }
 
@@ -31,27 +32,24 @@
             $filetemp = $_FILES['user_avatar_upload_btn']['tmp_name'];
 
             $customer_pic_path = $_SESSION["user_avatar_dir_text"];
-
-            echo $customer_pic_path;
-            echo $filename . " file name concatenated ";
             
             if ($filesize < 2000000) {
 
                 $upload = move_uploaded_file($filetemp,$customer_pic_path.'/'.$filename);
 
-                echo $customer_pic_path.'/'.$filename;
-
                 if ($upload == 1) {
                     
                     $location = $customer_pic_path.'/'.$filename;
 
-                    $email = $this->email;
+                    $email = $_SESSION["user_email"];
 
-                    $location_query = " UPDATE signup
-                                        SET user_image_dir = $location
-                                        WHERE email = '$email'";
+                    $update_img_dir_query = " UPDATE sign_up
+                                              SET user_img_dir = '$location'
+                                              WHERE email = '$email'; ";
 
-                    if ($location_query) {
+                    $update_img_dir_passQuery = $this->mysqli->query($update_img_dir_query, MYSQLI_USE_RESULT);
+
+                    if ($update_img_dir_passQuery) {
 
                         echo " Picture updated successfully ";
 
@@ -73,9 +71,8 @@
 
     }
 
-    $account_profile_setup = new account_profile_update();
-    $account_profile_setup->database_connection();
-    $account_profile_setup->user_account_update();
-    $account_profile_setup->user_upload_pic();
+    $account_user_setup = new account_image_update();
+    $account_user_setup->database_connection();
+    $account_user_setup->user_upload_pic();
 
 ?>

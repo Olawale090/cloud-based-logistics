@@ -18,7 +18,6 @@ load_user.prototype ={
 
             event.preventDefault();
 
-            
             const xhr = new XMLHttpRequest();
             xhr.open('GET','../backend/user_account_carrier.php',true);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
@@ -27,16 +26,18 @@ load_user.prototype ={
                 if (xhr.status === 200) {
 
                     let data_parser = JSON.parse(xhr.responseText);
+                    console.log(data_parser);
+                    console.log(this.user_avatar);
 
                     this.username.innerHTML = data_parser.fullname;
 
-                    if (data_parser.user_image_dir == null) {
+                    if (data_parser.user_img_dir == null || data_parser.user_img_dir == '') {
 
                         this.user_avatar.src = "../assets/images/033-user.svg";
 
                     } else {
 
-                        this.user_avatar.src = `${data_parser.user_image_dir}`;
+                        this.user_avatar.src = `${data_parser.user_img_dir}`;
 
                     }
 
@@ -49,7 +50,9 @@ load_user.prototype ={
             };
 
             xhr.onerror = (err)=>{
+
                 console.error("ERROR IN SERVER RESPONSE",err);
+
             };
 
             xhr.send();

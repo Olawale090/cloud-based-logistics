@@ -7,6 +7,8 @@
     <link rel="shortcut icon" href="../assets/images/Group 49.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/product_actions.css">
 
+    <script async type="module" src="../scripts/product_delivery.js"></script>
+
     <title>Product delivery</title>
     
 </head>
@@ -35,8 +37,9 @@
                 <a href="../directories/dashboard.html" class="picking_dir"> Dashboard </a>
             </li>
 
-            <li class="profile_tabs username">Username</li>
-            <img src="../assets/images/e0e69226-9ff0-4e4e-a0fe-5ad8555a07e8.jpg" alt="u_avatar" class="avatar u_avatar">
+            <li class="profile_tabs username profile_username">Username</li>
+            <img src="../assets/images/e0e69226-9ff0-4e4e-a0fe-5ad8555a07e8.jpg" alt="u_avatar" class="avatar u_avatar user_image_placeholder">
+
         </div>
         
     </div>
@@ -104,9 +107,13 @@
         <img src="../assets/images/real QR code.png" alt="qr_code" class="img_qr_code">
 
         <input type="text" name="qr_code_string" placeholder="Remember your place Jafar" class="qr_code_container">
+        <div class="form_loader"></div>
          
         <button class="print_qr_pdf">Print QR</button>
         <button name="product_delivery_submit_btn" class="product_delivery_submit_btn"> Submit </button>
+
+        <div class="form_loader"></div>
+
         <label for="next_btn" class="next_btn"> next >> </label>
     </form>
     

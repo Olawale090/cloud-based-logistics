@@ -79,10 +79,11 @@
         <label for="p_image_upload"> Upload your profile image </label>
         <label for="upload" class="p_img_upload_lb"> Select image </label> 
         
-        <input type="file" placeholder="Select image" name="user_avatar_upload_btn" class="product_upload_button image_selector">
+        <input type="file" name="user_avatar_upload_btn" class="image_selector product_upload_button">
         
 
-        <img src="../assets/images/033-user.svg" height="200px" alt="user-avatar" class="p_image_placeholder user_image_placeholder">
+        <img src="../assets/images/033-user.svg" height="200px" alt="user-avatar" style="margin-bottom: 2rem;" class="p_image_placeholder user_image_placeholder">
+        <div class="form_loader"></div>
 
         <!-- <label for="image_upload_notifier" class="p_image_upload_notifier notifier"> Please select image to upload </label> -->
 

@@ -29,7 +29,8 @@
 
             if ($customer_data_fetch) {
 
-                    echo json_encode($customer_data_fetch); 
+                    echo json_encode($customer_data_fetch);
+                    $_SESSION["user_avatar_dir_text"] = $customer_data_fetch['user_img_dir']; 
 
             }
 

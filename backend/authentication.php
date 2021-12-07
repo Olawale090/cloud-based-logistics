@@ -76,14 +76,9 @@
 
                                 $picture_dir = mkdir("../customer/".$username."-".$email);
                                 $picture_dir_text = "../customer/".$username."-".$email;
-                                $_SESSION["user_avatar_dir_text"] = $picture_dir_text;
-
-                                // echo $picture_dir_text;
-
-                                // $picture_dir = $_SESSION["user_avatar_dir"];
 
                                 $update_img_dir_query = "   UPDATE sign_up
-
+                                
                                                             SET user_img_dir = '$picture_dir_text' 
 
                                                             WHERE email = '$email'";

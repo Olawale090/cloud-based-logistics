@@ -59,14 +59,14 @@ label.notifier{
 .product_quantity{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 70%;
 }
 
 .product_delivery_number{
     display: flex;
     flex-direction: column;
-    width: 40%;
-    margin-left: 2rem;
+    width: 70%;
+    /* margin-left: 2rem; */
 }
 
 .number_value_button{
