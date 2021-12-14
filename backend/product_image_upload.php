@@ -1,12 +1,12 @@
 <?php
     session_start();
 
-    interface Iaccount_image_update {
+    interface Iproduct_image_update {
         public function database_connection();
-        public function user_upload_pic();
+        public function product_upload_pic();
     }
 
-    class account_image_update implements Iaccount_image_update
+    class product_image_update implements Iproduct_image_update
     {
         public function __construct(){
 
@@ -24,21 +24,21 @@
 
         }
 
-        public function user_upload_pic(){
+        public function product_upload_pic(){
             
-            $filename = $_FILES['user_avatar_upload_btn']['name'];
-            $filesize = $_FILES['user_avatar_upload_btn']['size'];
-            $filetemp = $_FILES['user_avatar_upload_btn']['tmp_name'];
+            $filename = $_FILES['product_upload_button']['name'];
+            $filesize = $_FILES['product_upload_button']['size'];
+            $filetemp = $_FILES['product_upload_button']['tmp_name'];
 
-            $customer_pic_path = $_SESSION["user_avatar_dir_text"];
+            $product_pic_path = $_SESSION['product_picture_dir_text'];
             
             if ($filesize < 2000000) {
 
-                $upload = move_uploaded_file($filetemp,$customer_pic_path.'/'.$filename);
+                $upload = move_uploaded_file($filetemp,$product_pic_path.'/'.$filename);
 
                 if ($upload == 1) {
                     
-                    $location = $customer_pic_path.'/'.$filename;
+                    $location = $product_pic_path.'/'.$filename;
 
                     $email = $_SESSION["user_email"];
 

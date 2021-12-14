@@ -42,24 +42,23 @@
                     $product_delivery_number = strip_tags($this->product_delivery_number);
                     $product_r_email = strip_tags( $this->product_receiver_email);
                     $product_qr_code = strip_tags($this->product_qr_code_url);
+
+                    $product_img_dir = $_SESSION['product_picture_dir_text'];
                    
                     if ($product_name && $product_category && $product_quantity && $product_delivery_number && $product_r_email && $product_qr_code) {
 
-                        $product_query = " INSERT INTO product_delivery( product_name, product_category, product_quantity, 
+                        $product_query = " INSERT INTO product_delivery(product_name, product_category, product_quantity, 
                                                                 product_delivery_number,product_receiver_email,product_img_dir,
                                                                 product_qr_url_string)
 
                                            VALUES ('$product_name', '$product_category ', '$product_quantity',
-                                                  '$product_delivery_number','$product_r_email','','$product_qr_code'); ";
+                                                  '$product_delivery_number','$product_r_email','$product_img_dir','$product_qr_code'); ";
 
                         $product_pass_query = $this->mysqli->query($product_query, MYSQLI_USE_RESULT);
 
                         if ($product_pass_query) {
 
                             echo "Form submitted successfuly";
-
-                            $product_picture_dir = mkdir("../product_delivery/".$product_category."-".$product_name);
-                            $product_picture_dir_text = "../product_delivery/".$product_category."-".$product_name;
 
                         } else {
 
