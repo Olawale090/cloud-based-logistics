@@ -4,6 +4,7 @@
 
     class product_folder_creator 
     {
+
         public function __construct(){
 
             $this->mysqli = new mysqli('localhost','root','','logistics');
@@ -33,17 +34,39 @@
                     $product_quantity = strip_tags($this->product_quantity);
                     $product_delivery_number = strip_tags($this->product_delivery_number);
 
-                    if ($product_name && $product_category && $product_quantity && $product_delivery_number && $product_r_email && $product_qr_code) {
+                    $_SESSION['product_delivery_number'] = $product_delivery_number;
+
+                    if ($product_name && $product_category && $product_quantity && $product_delivery_number) {
             
                         $product_picture_dir = mkdir("../product_delivery/".$product_category."-".$product_name."-".$product_delivery_number);
                         $product_picture_dir_text = "../product_delivery/".$product_category."-".$product_name."-".$product_delivery_number;
 
                         $_SESSION['product_picture_dir_text'] = $product_picture_dir_text;
 
-                    }
+
+                        $product_query = " INSERT INTO product_delivery(product_name, product_category, product_quantity, product_delivery_number)
+
+                                           VALUES ('$product_name', '$product_category ', '$product_quantity','$product_delivery_number'); ";
+
+                        $product_pass_query = $this->mysqli->query($product_query, MYSQLI_USE_RESULT);
+
+                        if ($product_pass_query) {
+
+                            echo "Form submitted successfuly";
+
+                        } else {
+
+                            echo ' Form not submitted please try again.';
+                        }
+
+                    } 
+
             }
+            
 
         }
+
+
     }
     
 

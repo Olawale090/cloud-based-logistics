@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="../styles/product_actions.css">
     <link rel="stylesheet" href="../styles/order_verification.css">
 
+    <script async type="module" src="../scripts/order_verification.js"></script>
+    <script src="../scripts/qrcode.js"></script>
+    <script async type="module" src="../scripts/pipe.js"></script>
+
     <title>Order verification</title>
+    
 </head>
 <body>
     
@@ -37,7 +42,7 @@
             </li>
 
 
-            <li class="profile_tabs username"> Username </li>
+            <li class="profile_tabs username profile_username"> Username </li>
             <img src="../assets/images/e0e69226-9ff0-4e4e-a0fe-5ad8555a07e8.jpg" alt="u_avatar" class="avatar u_avatar">
         </div>
         
@@ -52,42 +57,94 @@
             
     </div>
 
-    <div class="scanned_product_data">
+<?php
 
-        <form action="" method="get" class="scanned_product_data_texts">
+    session_start();
 
-            <label for="p_name"> Product name</label>
-            <div class="p_name_value"> Mobile phone accessories </div>
+    class load_product_data
+    {
+        public function __construct() {
+
+            $this->mysqli = new mysqli('localhost','root','','logistics');
+        }
+
+        public function database_connection(){
+
+            if (mysqli_connect_errno()) {
+                
+                echo " Connection failed, please try again ";
+
+            }
+
+        }
+
+        public function product_data_pipe(){
+
+            $product_delivery_number =  $_GET['product_delivery_number'];
+
+            $_SESSION['product_del_no_data'] =  $product_delivery_number;
+
+            $product_data_query = " SELECT * FROM product_delivery 
+                                    WHERE product_delivery_number = '$product_delivery_number'; ";
+
+            $product_data_passQuery = $this->mysqli->query( $product_data_query, MYSQLI_USE_RESULT);
+            $product_data_fetch = $product_data_passQuery->fetch_array(MYSQLI_ASSOC);
+
+            if ($product_data_fetch) {
+
+                    echo ' 
+                            <div class="scanned_product_data">
+
+                                <form action="" method="get" class="scanned_product_data_texts">
+
+                                    <label for="p_name"> Product name</label>
+                                    <div class="p_name_value">'. $product_data_fetch['product_name']. ' </div>
+                            
+                                    <label for="P_category"> Product category </label>
+                                    <div class="p_name_value">' . $product_data_fetch['product_category']. '</div>
+
+                                    <label for="P_category"> Product quantity </label>
+                                    <div class="p_name_value"> ' . $product_data_fetch['product_quantity']. ' </div>
+
+                                    <label for="p_delivery_number"> Product delivery number </label>
+                                    <div class="p_name_value">' . $product_data_fetch['product_delivery_number']. '</div>
+                                    
+                                    <label for="p_receiver_phone"> Receivers e-mail </label>
+                                    <div class="p_name_value">' . $product_data_fetch['product_receiver_email']. '</div>
+                                    
+                                    <label for="p_image_upload"> Generated QR code </label>
+                                        <div class="img_qr_code" style="width:35%; margin-left:32.5%; margin-bottom:1rem;"></div>
+                                    <br>    
+                                    <label for="r_email_notifier" class="r_email_error_notifier notifier"> Please scan the QR code ( It contain Product receiver details ) </label>
+                            
+                                </form>
+
+                                <div class="scanned_product_image_container">
+                                    <img src="'.$product_data_fetch['product_img_dir'].'" height="300px" alt="product_avatar">
+                                </div>
+
+                            </div> ';
+
+            }
+
+        }
+     
+    }
+
+
+    $product_data_pipeline = new load_product_data();
+    $product_data_pipeline->database_connection();
+    $product_data_pipeline->product_data_pipe();
+        
     
-            <label for="P_category"> Product category </label>
-            <div class="p_name_value"> Communication devices </div>
-
-            <label for="P_category"> Product quantity </label>
-            <div class="p_name_value"> 100 </div>
-
-            <label for="p_delivery_number"> Product delivery number </label>
-            <div class="p_name_value"> 8947884594 </div>
-            
-            <label for="p_receiver_phone"> Receiver's phone number </label>
-            <div class="p_name_value"> 08168612448 </div>
-            
-            
-            <label for="p_image_upload"> Generated QR code </label>
-            <img src="../assets/images/real QR code.png" height="200px" style="margin-top: 5%; margin-bottom: 5%;" alt="" class="p_image_placeholder">
-            <br>    
-            <label for="r_email_notifier" class="r_email_error_notifier notifier"> Please scan the QR code before you continue</label>
-    
-        </form>
-
-        <div class="scanned_product_image_container">
-            <img src="../assets/images/pexels-kampus-production-7289717.jpg" height="300px" alt="product_avatar">
-        </div>
-
-    </div>
+?>
     
     <div class="print_button_container">
-        <button class="print_voucher_button">Print</button>
+        <button class="print_voucher_button"> Print </button>
     </div>
 
 </body>
 </html>
+
+
+

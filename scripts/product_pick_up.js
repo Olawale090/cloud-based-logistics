@@ -1,94 +1,91 @@
 "use strict";
 
-const product_delivery = function(){
+const product_pick_up = function(){
 
-    this.form = document.querySelector('.product_delivery_registration');
+    this.form = document.querySelector('.product_receiver_registration');
 
     this.username = document.querySelector(".profile_username");
     this.user_avatar = document.querySelector(".user_image_placeholder");
 
-
-    this.productName = document.querySelector(".product_name");
-    this.productCategory = document.querySelector(".product_category");
+    this.receiverName = document.querySelector(".receiver_name");
+    this.receiverEmail = document.querySelector(".receiver_email");
     this.productQuantity = document.querySelector(".product_quantity_input");
 
-    this.productDeliveryNumber = document.querySelector(".product_delivery_number_input");
-    this.deliveryNumberGenerator = document.querySelector(".number_generator");
-    this.DNGplaceholder = document.querySelector(".number_value_placeholder"); 
+    this.receiverSerialNumber = document.querySelector(".receiver_serial_number");
+    this.serialNumberGenerator = document.querySelector(".number_generator");
+    this.SNGplaceholder = document.querySelector(".number_value_placeholder"); 
 
-    this.receiversMail = document.querySelector(".r_email");
-    this.productImageSelection = document.querySelector(".product_upload_button");
-    this.productQRURL = document.querySelector(".qr_code_container");
+    this.receiversAddress = document.querySelector(".receiver_address");
+    this.receiverImageSelection = document.querySelector(".receiver_upload_button");
+    this.receiverQRURL = document.querySelector(".qr_code_container");
 
-    this.productImagePlaceholder = document.querySelector(".p_image_placeholder");
+    this.receiverImagePlaceholder = document.querySelector(".r_image_placeholder");
 
-    this.submitBtn = document.querySelector(".product_delivery_submit_btn");
-    
-
-    this.form_notifier = document.querySelector(".product_form_notifier");
+    this.submitBtn = document.querySelector(".receiver_details_submit_btn");
+    this.form_notifier = document.querySelector(".receiver_form_notifier");
 
     this.loader = document.querySelector(".form_loader");
     
 };
 
-product_delivery.prototype ={
+product_pick_up.prototype ={
 
     product_delivery_number_generator(){
 
-        this.deliveryNumberGenerator.addEventListener("click",(event)=>{
+        this.serialNumberGenerator.addEventListener("click",(event)=>{
 
             event.preventDefault();
 
             let numberGenerator = Math.floor(Math.random()* 999000000000 ) + 1000000000;
             
-            this.DNGplaceholder.innerHTML = numberGenerator;
-            this.productDeliveryNumber.value = numberGenerator;
-            this.productDeliveryNumber.focus();
+            this.SNGplaceholder.innerHTML = numberGenerator;
+            this.receiverSerialNumber.value = numberGenerator;
+            this.receiverSerialNumber.focus();
 
         },false);
 
     },
 
-    select_product_image(){
+    select_receiver_image(){
 
-        this.productImageSelection.addEventListener('change',()=>{
+        this.receiverImageSelection.addEventListener('change',()=>{
 
             let reader = new FileReader();
     
             reader.onload = ()=>{
 
                 let dataurl = reader.result;
-                this.productImagePlaceholder.src = `${dataurl}`;
+                this.receiverImagePlaceholder.src = `${dataurl}`;
 
-                let product_image_notifier = document.querySelector(".p_image_upload_notifier");
+                let receiver_image_notifier = document.querySelector(".r_image_upload_notifier");
 
-                product_image_notifier.style.opacity = '0';
+                receiver_image_notifier.style.opacity = '0';
 
             };
                 
-            reader.readAsDataURL(this.productImageSelection.files[0]);
+            reader.readAsDataURL(this.receiverImageSelection.files[0]);
 
         });
     },
 
-    product_folder_maker(){
+    receiver_folder_maker(){
 
-        this.productDeliveryNumber.addEventListener("blur",()=>{
+        this.receiverSerialNumber.addEventListener("blur",()=>{
 
-            if (this.productName.value != "" || this.productCategory.value != "" || this.productQuantity.value != "" || this.productDeliveryNumber.value != "") {
+            if ( this.receiverName.value != "" || this.receiverEmail.value != "" || this.productQuantity.value != "" || this.receiverSerialNumber.value != "") {
 
-                this.productQRURL.value = `http://localhost/cloud-based%20delivery/directories/order_verification.php?product_delivery_number=${this.productDeliveryNumber.value}`;
+                this.receiverQRURL.value = `http://localhost/cloud-based%20delivery/directories/receiver_information.php?receiver_email=${this.receiverEmail.value}&receiver_serial_number=${this.receiverSerialNumber.value}`;
 
-                const params = 'product_name='+this.productName.value + '&product_category='+this.productCategory.value + '&product_quantity='+this.productQuantity.value + '&product_delivery_number='+this.productDeliveryNumber.value;
+                const params = 'r_name='+this.receiverName.value+'&r_email='+this.receiverEmail.value + '&p_quantity='+this.productQuantity.value + '&r_serial_number='+this.receiverSerialNumber.value;
                 
                 const xhr = new XMLHttpRequest();
-                xhr.open('POST','../backend/product_folder_mkr.php',true);
+                xhr.open('POST','../backend/receiver_folder_mkr.php',true);
                 xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
                 xhr.onload = ()=>{
+
                     if (xhr.status === 200) {
                         
-                        console.log("name marked");
                         console.log(xhr.responseText);
     
                     } else if(xhr.status === 404) {
@@ -160,14 +157,14 @@ product_delivery.prototype ={
 
     },
 
-    product_image_upload(){
+    receiver_image_upload(){
 
-        this.productImageSelection.addEventListener('change',(event)=>{
+        this.receiverImageSelection.addEventListener('change',(event)=>{
 
             event.preventDefault();
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST','../backend/product_image_upload.php',true);  
+            xhr.open('POST','../backend/receiver_image_upload.php',true);  
             let file_data = new FormData(this.form);
 
             xhr.onloadstart = ()=>{
@@ -192,17 +189,16 @@ product_delivery.prototype ={
 
                 if (xhr.status === 200) {
 
-                    let product_image_notifier = document.querySelector(".p_image_upload_notifier");
-                    product_image_notifier.innerHTML = xhr.responseText;
-
+                    let receiver_image_notifier = document.querySelector(".r_image_upload_notifier");
+                    receiver_image_notifier.innerHTML = xhr.responseText;
                     console.log(xhr.responseText);
 
                     if (xhr.responseText == " Picture updated successfully ") {
 
-                        product_image_notifier.style.color = "rgb(40, 230, 113)";
+                        receiver_image_notifier.style.color = "rgb(40, 230, 113)";
 
                     }else{
-                        product_image_notifier.innerHTML = "something went wrong";
+                        receiver_image_notifier.innerHTML = "Something went wrong";
                     }
 
                 } else if(xhr.status === 404) {
@@ -225,18 +221,18 @@ product_delivery.prototype ={
 
     },
 
-    product_details_update(){
+    receiver_details_update(){
 
         this.submitBtn.addEventListener('click',(event)=>{
 
             event.preventDefault();
             
-            const params = 'product_name='+this.productName.value + '&product_category='+this.productCategory.value + '&product_quantity='+this.productQuantity.value + '&product_delivery_number='+this.productDeliveryNumber.value + '&r_email='+this.receiversMail.value + '&qr_code_string='+this.productQRURL.value;
-
+            const params = 'r_name='+this.receiverName.value +'&r_email=' + this.receiverEmail.value + '&p_quantity=' + this.productQuantity.value + '&r_serial_number=' + this.receiverSerialNumber.value + '&r_address='+ this.receiversAddress.value + '&r_qr_code_string=' + this.receiverQRURL.value;
+            
             const xhr = new XMLHttpRequest();
-            xhr.open('POST','../backend/product_delivery_setup.php',true);
+            xhr.open('POST','../backend/receiver_details_update.php',true);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
-
+            
             xhr.onload = ()=>{
 
                 if (xhr.status === 200) {
@@ -264,7 +260,7 @@ product_delivery.prototype ={
     },
 
     qrCodeGenerator(){
-        this.productDeliveryNumber.addEventListener("blur",()=>{
+        this.receiverSerialNumber.addEventListener("blur",()=>{
 
             var qrcode = new QRCode(document.querySelector(".img_qr_code"), {
                 width : 200,
@@ -284,70 +280,72 @@ product_delivery.prototype ={
 
 }
 
-let product_delivery_setup = new product_delivery();
+let product_pick_up_setup = new product_pick_up();
+    product_pick_up_setup.product_delivery_number_generator();
+    product_pick_up_setup.select_receiver_image();
+    product_pick_up_setup.load_user_data();
+    product_pick_up_setup.receiver_folder_maker();
+    product_pick_up_setup.receiver_image_upload();
+    product_pick_up_setup.receiver_details_update();
+    product_pick_up_setup.qrCodeGenerator();
 
-    product_delivery_setup.product_delivery_number_generator();
-    product_delivery_setup.select_product_image();
-    product_delivery_setup.load_user_data();
-    product_delivery_setup.product_folder_maker();
-    product_delivery_setup.product_image_upload();
-    product_delivery_setup.product_details_update();
-    product_delivery_setup.qrCodeGenerator();
 
-const product_input_validator = function(){
 
-    this.product_name_notifier = document.querySelector(".p_name_error_notifier");
-    this.product_category_notifier = document.querySelector(".p_category_error_notifier");
+
+
+const receiver_input_validator = function(){
+
+    this.receiver_name_notifier = document.querySelector(".r_name_error_notifier");
+    this.receiver_email_notifier = document.querySelector(".r_email_error_notifier");
     this.product_quantity_notifier = document.querySelector(".p_quantity_error_notifier ");
-    this.product_delivery_number_notifier = document.querySelector(".product_delivery_number");
-    this.product_receiver_email_notifier = document.querySelector(".r_email_error_notifier");
-    this.product_image = document.querySelector(".p_image_upload_notifier");
-    this.product_qr_url_notifier = document.querySelector(".p_name_error_notifier");
+    this.receiver_address_notifier = document.querySelector(".r_address_error_notifier");
+    this.receiver_image = document.querySelector(".p_image_upload_notifier");
 
 };
 
-product_input_validator.prototype  = Object.create(product_delivery_setup);
+receiver_input_validator.prototype  = Object.create(product_pick_up_setup);
 
-product_input_validator.prototype = {
+receiver_input_validator.prototype = {
 
     validate_inputs (){
 
-        this.productName.addEventListener("blur",()=>{
+        this.receiverName.addEventListener("blur",()=>{
             
-            if(this.productName.value == ''){
-                this.product_name_notifier.style.opacity = "1";
+            if(this.receiverName.value == ''){
+                this.receiver_name_notifier.style.opacity = "1";
             }else{
-                this.product_name_notifier.style.opacity = "0";
+                this.receiver_name_notifier.style.opacity = "0";
             }
 
         });
 
-        this.productName.addEventListener("input",()=>{
+        this.receiverName.addEventListener("input",()=>{
             
-            this.product_name_notifier.style.opacity = "0";
+            this.receiver_name_notifier.style.opacity = "0";
 
         },false);
 
 
-        this.productCategory.addEventListener("blur",()=>{
+        this.receiverEmail.addEventListener("blur",()=>{
             
-            if(this.productCategory.value == ''){
+            if(this.receiverEmail.value == ''){
 
-                this.product_category_notifier.style.opacity = "1";
+                this.receiver_email_notifier.style.opacity = "1";
 
             }else{
 
-                this.product_category_notifier.style.opacity = "0";
+                this.receiver_email_notifier.style.opacity = "0";
 
             }
 
         });
 
-        this.productCategory.addEventListener("input",()=>{
+        this.receiverEmail.addEventListener("input",()=>{
             
-            this.product_category_notifier.style.opacity = '0';
+            this.receiver_email_notifier.style.opacity = '0';
 
         },false);
+
 
         this.productQuantity.addEventListener("blur",()=>{
 
@@ -369,23 +367,23 @@ product_input_validator.prototype = {
 
         },false);
 
-         this.receiversMail.addEventListener("blur",()=>{
-            
-            if(this.receiversMail.value == ''){
+        this.receiversAddress.addEventListener("blur",()=>{
+        
+            if( this.receiversAddress.value == ''){
 
-                this.product_receiver_email_notifier.style.opacity = "1";
+                this.receiver_address_notifier.style.opacity = "1";
 
             }else{
 
-                this.product_receiver_email_notifier.style.opacity = "0";
+                this.receiver_address_notifier.style.opacity = "0";
 
             }
 
         });
 
-        this.receiversMail.addEventListener("input",()=>{
+        this.receiversAddress.addEventListener("input",()=>{
             
-            this.product_receiver_email_notifier.style.opacity = '0';
+            this.receiver_address_notifier.style.opacity = '0';
 
         },false);
 
@@ -395,8 +393,10 @@ product_input_validator.prototype = {
 };
 
 
-let validator = new product_input_validator();
-                Object.assign(validator, product_delivery_setup);
+let validator = new receiver_input_validator();
+                Object.assign(validator, product_pick_up_setup);
 
     validator.validate_inputs();
+
+
 

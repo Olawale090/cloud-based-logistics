@@ -1,12 +1,12 @@
 <?php
     session_start();
 
-    interface Iproduct_image_update {
+    interface Ireceiver_image_update {
         public function database_connection();
-        public function product_upload_pic();
+        public function receiver_upload_pic();
     }
 
-    class product_image_update implements Iproduct_image_update
+    class receiver_image_update implements Ireceiver_image_update
     {
         public function __construct(){
 
@@ -24,26 +24,26 @@
 
         }
 
-        public function product_upload_pic(){
-            
-            $filename = $_FILES['product_upload_button']['name'];
-            $filesize = $_FILES['product_upload_button']['size'];
-            $filetemp = $_FILES['product_upload_button']['tmp_name'];
+        public function receiver_upload_pic(){
+            echo "receiver picture upload method is working";
+            $filename = $_FILES['r_image']['name'];
+            $filesize = $_FILES['r_image']['size'];
+            $filetemp = $_FILES['r_image']['tmp_name'];
 
-            $product_pic_path = $_SESSION['product_picture_dir_text'];
-            $product_delivery_number = $_SESSION['product_delivery_number'];
+            $receiver_pic_path = $_SESSION['receiver_picture_dir_text'];
+            $receiver_serial_number = $_SESSION['receiver_serial_number'];
             
             if ($filesize < 2000000) {
 
-                $upload = move_uploaded_file($filetemp,$product_pic_path.'/'.$filename);
+                $upload = move_uploaded_file($filetemp,$receiver_pic_path.'/'.$filename);
 
                 if ($upload == 1) {
                     
-                    $location = $product_pic_path.'/'.$filename;
+                    $location = $receiver_pic_path.'/'.$filename;
 
-                    $update_img_dir_query = " UPDATE product_delivery
-                                              SET product_img_dir = '$location'
-                                              WHERE product_delivery_number = '$product_delivery_number'; 
+                    $update_img_dir_query = " UPDATE product_pick_up
+                                              SET receiver_image_dir = '$location'
+                                              WHERE receiver_serial_number = '$receiver_serial_number'; 
                                             ";
 
                     $update_img_dir_passQuery = $this->mysqli->query($update_img_dir_query, MYSQLI_USE_RESULT);
@@ -70,8 +70,8 @@
 
     }
 
-    $product_image_setup = new product_image_update();
-    $product_image_setup->database_connection();
-    $product_image_setup->product_upload_pic();
+    $receiver_image_setup = new receiver_image_update();
+    $receiver_image_setup->database_connection();
+    $receiver_image_setup->receiver_upload_pic();
 
 ?>

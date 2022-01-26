@@ -27,7 +27,6 @@ li{
     height: 3em;
     display: flex;
     flex-direction: row;
-    /* background-color: rgba(5, 5, 5, 0.623); */
     position: absolute;
     top: 0;
 }
@@ -88,6 +87,16 @@ li{
    
 }
 
+@media screen and (max-width:480px) {
+
+    .menu_tabs{
+
+        margin-left: 5%;
+
+    }
+    
+}
+
 .menu_links{
     text-decoration: none;
     color: black;
@@ -100,6 +109,19 @@ li{
     margin:1rem;
     border-radius: 0.5em;
     transition: 0.5s;
+}
+
+@media screen and (max-width:480px) {
+
+    .menu{
+        background-color: #F6C00F;
+        height: 4em;
+        width: 8em;
+        margin:0.5rem;
+        border-radius: 0.5em;
+        transition: 0.5s;
+    }
+    
 }
 
 .menu:hover{
@@ -122,4 +144,16 @@ li{
     text-align: center;
     font-weight: bold;
     margin-top: 1rem;
+}
+
+
+@media screen and (max-width:480px) {
+
+    .delivery_menu_title{
+
+        font-size: 0.5rem;
+        margin-top: -0.3rem;
+        
+    }
+    
 }

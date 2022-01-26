@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product details</title>
+    <title>Transaction history</title>
 </head>
 <body>
-    
+    <h1>Transaction history</h1>
 </body>
 </html>

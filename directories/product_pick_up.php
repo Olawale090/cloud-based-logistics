@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/images/Group 49.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/product_actions.css">
+    <link rel="stylesheet" href="../styles/product_pick_up.css">
+    <link rel="stylesheet" href="../styles/loader.css">
+    
+    <script async type="module" src="../scripts/product_pick_up.js"></script>
+    <script src="../scripts/qrcode.js"></script>
 
     <title>Product pick up</title>
 
@@ -35,9 +40,9 @@
             </li>
 
 
-            <li class="profile_tabs username"> Username </li>
+            <li class="profile_tabs username profile_username"> Username </li>
             
-            <img src="../assets/images/e0e69226-9ff0-4e4e-a0fe-5ad8555a07e8.jpg" alt="u_avatar" class="avatar u_avatar">
+            <img src="../assets/images/e0e69226-9ff0-4e4e-a0fe-5ad8555a07e8.jpg" alt="u_avatar" class="avatar u_avatar user_image_placeholder">
         </div>
         
     </div>
@@ -51,30 +56,30 @@
             
     </div>
 
-    <form action="" method="post" class="product_delivery_registration">
+    <form action="" method="post" class="product_delivery_registration product_receiver_registration">
 
-        <label for="p_name">Receiver's name</label>
-        <input type="text" placeholder="Please enter product name" class="product_name" >
-        <label for="p_name_notifier" class="p_name_error_notifier notifier">Please enter the receiver's name</label>
+        <label for="r_name">Receiver's name</label>
+        <input type="text" placeholder="Please enter receiver's name" class="receiver_name" name="r_name">
+        <label for="p_name_notifier" class="r_name_error_notifier notifier">Please enter the receiver's name</label>
 
-        <label for="P_category"> Receiver's email </label>
-        <input type="text" placeholder="Please enter product category" class="product_category">
-        <label for="p_category_notifier" class="p_category_error_notifier notifier"> Please enter the receiver's email </label>
+        <label for="r_email"> Receiver's email </label>
+        <input type="text" placeholder="Please enter receiver's email" class="receiver_email" name="r_email">
+        <label for="p_category_notifier" class="r_email_error_notifier notifier"> Please enter the receiver's email </label>
 
         <div class="p_quantity_delivery_number">
 
             <div class="product_quantity">
 
                 <label for="p_quantity"> Product quantity </label>
-                <input type="text" placeholder="Please enter product quantity" class="" >
+                <input type="text" placeholder="Please enter product quantity" class="product_quantity product_quantity_input" name="p_quantity">
                 <label for="p_delivery_number_notifier" class="p_quantity_error_notifier notifier"> Please enter product quantity </label>
                 
             </div>
 
             <div class="product_delivery_number">
 
-                <label for="p_delivery_number"> Receiver's serial number </label>
-                <input type="text" placeholder="Please enter product delivery number" class="">
+                <label for="r_serial_number"> Receiver's serial number </label>
+                <input type="text" placeholder="Please enter receiver serial number" class="receiver_serial_number" name="r_serial_number">
 
                 <div class="number_value_button">
                     <button class="number_generator"> Get number </button>
@@ -85,27 +90,33 @@
             
         </div>
 
-        <label for="receiver_email"> Receiver's address </label>
+        <label for="receiver_address"> Receiver's address </label>
         
-        <input type="text" placeholder="Please enter receiver's email" class="r_email">
-        <label for="r_email_notifier" class="r_email_error_notifier notifier"> Please enter receiver's address </label>
+        <input type="text" placeholder="Please enter receiver's email" class="receiver_address" name="r_address">
+        <label for="r_email_notifier" class="r_address_error_notifier notifier"> Please enter receiver's address </label>
 
-        <label for="p_image_upload"> Upload receiver's image </label>
-        <label for="upload" class="p_img_upload_lb"> Select image </label> 
-        <input type="file" placeholder="Select image" class="product_upload_button"> 
+        <label for="r_image_upload"> Upload receiver's image </label>
+        <label for="upload" class="r_img_upload_lb p_img_upload_lb"> Select image </label> 
+        <input type="file" placeholder="Select image" class="product_upload_button receiver_upload_button" name="r_image"> 
         
 
-        <img src="../assets/images/033-user.svg" height="200px" alt="" class="p_image_placeholder">
+        <img src="../assets/images/033-user.svg" height="200px" alt="" class="p_image_placeholder r_image_placeholder">
+        <div class="form_loader"></div>
 
-        <label for="image_upload_notifier" class="p_image_upload_notifier notifier"> Please select image to upload </label>
+        <label for="image_upload_notifier" class="r_image_upload_notifier notifier"> Please select image to upload </label>
 
         <label for="p_qr"> Autogenerated QR code </label>
-        <img src="../assets/images/024-qr-code.svg" alt="qr_code" class="img_qr_code">
-        <!-- <div class="qr_code_container">
-            Remember your place Jafar
-        </div> -->
+        <div class="img_qr_code" style="width:35%; margin-left:32.5%; margin-bottom:1rem;"></div>
+        
+        <input type="text" name="r_qr_code_string" placeholder="URL qr strings" id="text" class="qr_code_container">
+
         <button class="print_qr_pdf">Print QR</button>
-        <button name="" class="product_delivery_submit_btn"> Submit </button>
+        <button name="" class="product_delivery_submit_btn receiver_details_submit_btn"> Submit </button>
+
+        <div class="form_loader"></div>
+
+        <div class="product_form_notifier receiver_form_notifier"> </div>
+
         <label for="next_btn" class="next_btn"> next >> </label>
     </form>
 

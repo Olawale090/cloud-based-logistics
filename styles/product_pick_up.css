@@ -1,13 +1,13 @@
-.p_name_error_notifier, 
-.p_category_error_notifier,
+.r_name_error_notifier,
+.r_email_error_notifier, 
 .p_quantity_error_notifier,
-.r_email_error_notifier 
+.r_address_error_notifier
 {
     pointer-events: none;
     opacity: 0;
 }
 
-.p_image_upload_notifier{
+.r_image_upload_notifier{
     pointer-events: none;
     opacity: 1;
 }
@@ -18,4 +18,3 @@
     font-size: 1rem;
     text-align: center;
 }
-

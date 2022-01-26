@@ -2,42 +2,41 @@
 
 // using ES5 structural design pattern to creating objects and API interaction
 
-export const load_user = function(){
+export const load_product = function(){
     
-    // signup parameters
-    this.username = document.querySelector(".profile_username");
-    this.user_avatar = document.querySelector(".u_avatar");
 
 };
 
-load_user.prototype ={
+load_product.prototype ={
    
-    user_details_mount(){
+    product_details_mount(){
 
         window.addEventListener('load',(event)=>{
-
+            
             event.preventDefault();
 
             const xhr = new XMLHttpRequest();
-            xhr.open('GET','../backend/user_account_carrier.php',true);
+            xhr.open('GET','../backend/order_verification_data.php',true);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
 
             xhr.onload = ()=>{
                 if (xhr.status === 200) {
 
                     let data_parser = JSON.parse(xhr.responseText);
+                    console.log(data_parser);
 
-                    this.username.innerHTML = data_parser.fullname;
+                    var qrcode = new QRCode(document.querySelector(".img_qr_code"), {
+                        width : 200,
+                        height : 200
+                    });
+        
+                    function makeCode () {		
 
-                    if (data_parser.user_img_dir == null || data_parser.user_img_dir == '') {
-
-                        this.user_avatar.src = "../assets/images/033-user.svg";
-
-                    } else {
-
-                        this.user_avatar.src = `${data_parser.user_img_dir}`;
-
+                        qrcode.makeCode(data_parser.product_qr_url_string);
+        
                     }
+                
+                    makeCode();
 
                 } else if(xhr.status === 404) {
 
@@ -55,9 +54,10 @@ load_user.prototype ={
 
             xhr.send();
         });
-    }
+    },
+
 
 }
 
-let user_binder = new load_user();
-user_binder.user_details_mount();
+let product_binder = new load_product();
+product_binder.product_details_mount();

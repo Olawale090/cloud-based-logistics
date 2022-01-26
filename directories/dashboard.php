@@ -94,6 +94,15 @@
                 
             </div>
         </a>
+
+        <a href="../directories/receiver_information.php" class="menu_links">
+            <div class="menu">
+
+                <img src="../assets/images/011-delivery man.svg" class="menu_images" alt="Product delivery">
+                <div class="delivery_menu_title"> Receiver's information </div>
+                
+            </div>
+        </a>
         
         <a href="../directories/fraud_awareness.php" class="menu_links">
         
@@ -104,6 +113,18 @@
     
             </div>
 
+        </a>
+
+
+        <a href="../directories/transaction_history.php" class="menu_links">
+        
+            <div class="menu">
+
+                <img src="../assets/images/018-mail.svg" class="menu_images" alt="Product delivery">
+                <div class="delivery_menu_title"> Transaction History </div>
+    
+            </div>
+        
         </a>
         
     </div>

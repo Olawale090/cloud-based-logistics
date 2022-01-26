@@ -9,6 +9,17 @@ html,body{
     margin-bottom: 2%;
     display: flex;
 }
+
+@media screen and (max-width:480px) {
+
+    .scanned_product_data{
+        flex-direction: column;
+        margin-left: 1%;
+    }    
+    
+}
+
+
 .scanned_product_data_texts{
     width: 50%;
 }

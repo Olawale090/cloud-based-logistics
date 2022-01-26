@@ -17,10 +17,27 @@
     justify-self: center;
 }
 
+@media screen and (max-width:480px) {
+    .product_activity_title{
+
+        margin-top: 20%;
+
+    }
+}
 
 .product_activity_image{
     height: 8em;
     margin-left:45%;
+}
+
+@media screen and (max-width:480px) {
+    
+    .product_activity_image{
+        margin-left:40%;
+        margin-top: 2%;
+
+    }
+
 }
 
 .product_delivery_registration{
@@ -29,6 +46,17 @@
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (max-width:480px) {
+    
+    .product_delivery_registration{
+
+        width: 90%;
+        margin-left: 5%;
+
+    }
+
 }
 
 label{
