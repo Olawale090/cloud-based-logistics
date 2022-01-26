@@ -10,7 +10,7 @@ html,body{
     display: flex;
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:580px) {
 
     .scanned_product_data{
         flex-direction: column;
