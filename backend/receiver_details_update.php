@@ -10,7 +10,8 @@
     {
         public function __construct(){
 
-            $this->mysqli = new mysqli('localhost','root','','logistics');
+            // $this->mysqli = new mysqli('localhost','root','','logistics');
+            $this->mysqli = new mysqli('sql104.epizy.com','epiz_30360932','nRfYOoLRfnNnxl','epiz_30360932_logistics');
             $this->receiver_name = mysqli_real_escape_string($this->mysqli,$_POST['r_name']);
             $this->receiver_email = mysqli_real_escape_string($this->mysqli, $_POST['r_email']);
             $this->product_quantity = mysqli_real_escape_string($this->mysqli, $_POST['p_quantity']);

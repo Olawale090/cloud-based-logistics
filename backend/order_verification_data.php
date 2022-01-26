@@ -6,7 +6,8 @@
     {
         public function __construct() {
 
-            $this->mysqli = new mysqli('localhost','root','','logistics');
+            // $this->mysqli = new mysqli('localhost','root','','logistics');
+            $this->mysqli = new mysqli('sql104.epizy.com','epiz_30360932','nRfYOoLRfnNnxl','epiz_30360932_logistics');
         }
 
         public function database_connection(){

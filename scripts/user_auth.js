@@ -81,4 +81,4 @@ signin_authentication.prototype ={
 }
 
 let auth = new signin_authentication();
-auth. user_account_login();
+auth.user_account_login();

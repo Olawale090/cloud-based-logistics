@@ -10,7 +10,8 @@
     {
         public function __construct(){
 
-            $this->mysqli = new mysqli('localhost','root','','logistics');
+            // $this->mysqli = new mysqli('localhost','root','','logistics');
+            $this->mysqli = new mysqli('sql104.epizy.com','epiz_30360932','nRfYOoLRfnNnxl','epiz_30360932_logistics');
             $this->fullname = mysqli_real_escape_string($this->mysqli,$_POST['user_fullname']);
             $this->email = mysqli_real_escape_string($this->mysqli, $_POST['user_email']);
             $this->private_PIN = mysqli_real_escape_string($this->mysqli, $_POST['user_PIN']);

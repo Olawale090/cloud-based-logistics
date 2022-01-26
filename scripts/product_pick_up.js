@@ -74,7 +74,7 @@ product_pick_up.prototype ={
 
             if ( this.receiverName.value != "" || this.receiverEmail.value != "" || this.productQuantity.value != "" || this.receiverSerialNumber.value != "") {
 
-                this.receiverQRURL.value = `http://localhost/cloud-based%20delivery/directories/receiver_information.php?receiver_email=${this.receiverEmail.value}&receiver_serial_number=${this.receiverSerialNumber.value}`;
+                this.receiverQRURL.value = `https://donlogistics.epizy.com/directories/receiver_information.php?receiver_email=${this.receiverEmail.value}&receiver_serial_number=${this.receiverSerialNumber.value}`;
 
                 const params = 'r_name='+this.receiverName.value+'&r_email='+this.receiverEmail.value + '&p_quantity='+this.productQuantity.value + '&r_serial_number='+this.receiverSerialNumber.value;
                 
@@ -228,7 +228,8 @@ product_pick_up.prototype ={
             event.preventDefault();
             
             const params = 'r_name='+this.receiverName.value +'&r_email=' + this.receiverEmail.value + '&p_quantity=' + this.productQuantity.value + '&r_serial_number=' + this.receiverSerialNumber.value + '&r_address='+ this.receiversAddress.value + '&r_qr_code_string=' + this.receiverQRURL.value;
-            
+            console.log(this.receiverQRURL.value);
+
             const xhr = new XMLHttpRequest();
             xhr.open('POST','../backend/receiver_details_update.php',true);
             xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');

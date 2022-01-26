@@ -111,7 +111,7 @@ li{
     transition: 0.5s;
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:580px) {
 
     .menu{
         background-color: #F6C00F;
@@ -147,7 +147,7 @@ li{
 }
 
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:580px) {
 
     .delivery_menu_title{
 
