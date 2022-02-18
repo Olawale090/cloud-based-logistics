@@ -1,0 +1,23 @@
+.agent_name_error_notifier,
+.agent_email_error_notifier, 
+.agent_phone_number_error_notifier,
+.p_name_error_notifier,
+.p_quantity_error_notifier
+{
+    pointer-events: none;
+    opacity: 0;
+}
+
+.agent_image_upload_notifier{
+    pointer-events: none;
+    opacity: 1;
+}
+
+
+.product_form_notifier{
+    color : red;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}

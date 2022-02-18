@@ -14,7 +14,8 @@
 </head>
 <body>
     
-    <img src="../assets/images/pexels-elevate-1267324.jpg" alt="mini-hero" class="mini_hero">
+    <img src="../assets/images/pexels-mart-production-7706546.JPG" alt="mini-hero" class="mini_hero">
+    
     <div class="nav_panel">
         <div class="left_float">
             <img src="../assets/images/Group 145.svg" alt="c_avatar" class="avatar">
@@ -26,6 +27,8 @@
         </div>
         
     </div>
+
+    
 
     <div class="hero_panel">
 
