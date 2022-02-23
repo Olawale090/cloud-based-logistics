@@ -7,8 +7,12 @@
 
     <link rel="shortcut icon" href="../assets/images/Group 49.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/product_actions.css">
+    <link rel="stylesheet" href="../styles/fraud_awareness.css">
+
+    <script async type="module" src="../scripts/fraud_awareness.js"></script>
 
     <title>Fraud awareness</title>
+
 </head>
 <body>
     
@@ -42,44 +46,46 @@
             
     </div>
 
-    <form action="" method="post" class="product_delivery_registration">
+    <form action="" method="post" class="product_delivery_registration fraud_awareness_form">
 
-        <div class="info_box">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse similique quidem distinctio ex voluptatum eum eos corrupti. Quos quisquam veniam culpa, dolor rerum harum. Harum modi nesciunt velit ex fuga!
-            Cum illo excepturi itaque quasi, odit laudantium. Cumque commodi odit neque hic expedita necessitatibus, harum est blanditiis et odio atque non quidem numquam placeat quam, eveniet asperiores ab dicta! Aspernatur!
-            Odio, non! Consectetur libero sunt suscipit architecto repellat delectus dignissimos enim aperiam quae consequuntur nesciunt impedit nemo, sed necessitatibus optio aliquam odit earum fuga minus in. Quis recusandae cupiditate similique.
+        <div class="info_box" id="printme">
+            Product receivers or customers expecting goods are to ensure that immediate notification is made to let your product sender know
+            of any fraudulent practises usually extral charges by delivery agents and unverifiable delivery agent. Therefore you are advised NOT to
+            pay to any delivery agent directly and also all agents matched with your goods must be verified through their QR code.
         </div>
-
-        <label for="p_name">Complainants's name</label>
-        <input type="text" placeholder="Please enter agent name" class="product_name" >
-        <label for="p_name_notifier" class="p_name_error_notifier notifier">Please enter Complainant's name</label>
+        
+        <label for="p_name">Complainant's name</label>
+        <input type="text" name="complainant_name" placeholder="Please enter agent name" class="complainant_name" >
+        <label for="p_name_notifier" class="complainant_name_error_notifier notifier">Please enter Complainant's name</label>
 
         <label for="P_category"> Agent's email </label>
-        <input type="text" placeholder="Please enter agent's email" class="product_category">
-        <label for="p_category_notifier" class="p_category_error_notifier notifier"> Please enter the agent's email </label>
+        <input type="text" name="agent_email" placeholder="Please enter agent's email" class="agent_email">
+        <label for="p_category_notifier" class="agent_email_error_notifier notifier"> Please enter the agent's email </label>
 
-        <textarea type="text" placeholder="Please explain incident" class="complaint_box" height="500px">  </textarea>
-        <label for="r_email_notifier" class="r_email_error_notifier notifier"> Please explain incident </label>
+        <label for="p_name">Customer complain</label>
+        <textarea type="text" name="complaint_box" placeholder="Please explain incident" class="complaint_box" height="500px">  </textarea>
+        <label for="r_email_notifier" class="complain_box_error_notifier notifier"> Please explain incident </label>
 
         <label for="p_name">Product name</label>
-        <input type="text" placeholder="Please enter product name" class="product_name" >
+        <input type="text" name="product_name" placeholder="Please enter product name" class="product_name" >
         <label for="p_name_notifier" class="p_name_error_notifier notifier"> Please enter the product name </label>
+
+        <label for="p_name">Product delivery number</label>
+        <input type="text" name="product_delivery_number" placeholder="Please enter product delivery number" class="product_delivery_number" >
+        <label for="p_delivery_number_notifier" class="p_delivery_number_error_notifier notifier"> Please enter the product delivery number </label>
 
         <label for="p_image_upload"> Upload agent's image </label>
         <label for="upload" class="p_img_upload_lb"> Select image </label> 
-        <input type="file" placeholder="Select image" class="product_upload_button"> 
+        <input type="file" name="agent_image" placeholder="Select image" class="product_upload_button agent_image_picker"> 
         
 
-        <img src="../assets/images/3196a15c34a94fd18c4bf047815fde18.jpg" height="200px" alt="" class="p_image_placeholder">
+        <img src="../assets/images/033-user.svg" height="200px" alt="" class="p_image_placeholder agent_image_placeholder">
+        <div class="form_loader"></div>
 
-        <label for="image_upload_notifier" class="p_image_upload_notifier notifier"> Please select image to upload </label>
+        <label for="image_upload_notifier" class="fraud_upload_notifier notifier"> Please select image to upload </label>
 
-        <label for="p_qr"> Autogenerated QR code of the product </label>
-        <img src="../assets/images/024-qr-code.svg" alt="qr_code" class="img_qr_code">
-        
-        <button class="print_qr_pdf">Print QR</button>
-        <button name="" class="product_delivery_submit_btn"> Submit </button>
-        <label for="next_btn" class="next_btn"> next >> </label>
+        <button name="" class="fraud_awareness_submit_btn"> Submit </button>
+        <div class="fraud_form_notifier"> </div>
         
     </form>
 

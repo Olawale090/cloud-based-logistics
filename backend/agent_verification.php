@@ -52,7 +52,7 @@
                                             SET product_name = '$product_name',
                                                 product_quantity = '$product_quantity',
                                                 agent_image_dir = '$agent_image_dir',
-                                                agent_qr_code_url = '$agent_qr_code'
+                                                agent_qrcode_url = '$agent_qr_code'
                                             WHERE agent_phone_number = '$agent_phone_number'; ";
 
                         $agent_pass_query = $this->mysqli->query($agent_query, MYSQLI_USE_RESULT);

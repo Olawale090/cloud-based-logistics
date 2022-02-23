@@ -7,7 +7,7 @@
 
     <link rel="shortcut icon" href="../assets/images/Group 49.svg" type="image/x-icon">
     <link rel="stylesheet" href="../styles/dashboard.css">
-    <script async type="module" src="../scripts/pipe.js"></script>
+    <!-- <script async type="module" src="../scripts/pipe.js"></script> -->
 
     <title>Dashboard</title>
 
@@ -15,6 +15,7 @@
 <body>
     
     <img src="../assets/images/pexels-mart-production-7706546.JPG" alt="mini-hero" class="mini_hero">
+    <!-- <img src="https://images.pexels.com/photos/7706443/pexels-photo-7706443.jpeg?cs=srgb&dl=pexels-mart-production-7706443.jpg&fm=jpg" alt="mini-hero" class="mini_hero"> -->
     
     <div class="nav_panel">
         <div class="left_float">
@@ -131,6 +132,8 @@
         </a>
         
     </div>
+
+    <script async type="module" src="../scripts/pipe.js"></script>
 
 </body>
 </html>

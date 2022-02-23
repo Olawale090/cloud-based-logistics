@@ -78,6 +78,7 @@ product_delivery.prototype ={
             if (this.productName.value != "" || this.productCategory.value != "" || this.productQuantity.value != "" || this.productDeliveryNumber.value != "") {
 
                 this.productQRURL.value = `https://donlogistics.epizy.com/directories/order_verification.php?product_delivery_number=${this.productDeliveryNumber.value}`;
+                // this.productQRURL.value = `http:localhost/cloud-based%20delivery/directories/order_verification.php?product_delivery_number=${this.productDeliveryNumber.value}`;
 
                 const params = 'product_name='+this.productName.value + '&product_category='+this.productCategory.value + '&product_quantity='+this.productQuantity.value + '&product_delivery_number='+this.productDeliveryNumber.value;
                 

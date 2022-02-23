@@ -87,11 +87,20 @@ li{
    
 }
 
+
+.mini_hero{
+    margin-left: 2%;
+    object-fit: cover;
+    background-size: cover;
+}
+
 @media screen and (max-width:480px) {
 
     .menu_tabs{
-
-        margin-left: 5%;
+        margin-left: 0;
+        width: 96%;
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(3,1fr);
 
     }
     
@@ -116,7 +125,7 @@ li{
     .menu{
         background-color: #F6C00F;
         height: 4em;
-        width: 8em;
+        width: 9.5em;
         margin:0.5rem;
         border-radius: 0.5em;
         transition: 0.5s;

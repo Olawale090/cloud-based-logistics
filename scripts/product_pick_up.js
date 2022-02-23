@@ -74,7 +74,8 @@ product_pick_up.prototype ={
 
             if ( this.receiverName.value != "" || this.receiverEmail.value != "" || this.productQuantity.value != "" || this.receiverSerialNumber.value != "") {
 
-                this.receiverQRURL.value = `https://donlogistics.epizy.com/directories/receiver_information.php?receiver_email=${this.receiverEmail.value}&receiver_serial_number=${this.receiverSerialNumber.value}`;
+                // this.receiverQRURL.value = `https://donlogistics.epizy.com/directories/receiver_information.php?receiver_email=${this.receiverEmail.value}&receiver_serial_number=${this.receiverSerialNumber.value}`;
+                this.receiverQRURL.value = `http://localhost/cloud-based%20delivery/directories/receiver_information.php?receiver_email=${this.receiverEmail.value}&receiver_serial_number=${this.receiverSerialNumber.value}`;
 
                 const params = 'r_name='+this.receiverName.value+'&r_email='+this.receiverEmail.value + '&p_quantity='+this.productQuantity.value + '&r_serial_number='+this.receiverSerialNumber.value;
                 
@@ -277,6 +278,21 @@ product_pick_up.prototype ={
             makeCode();
 
         },false);
+    },
+
+    print_qr_code(){
+        document.querySelector(".product_pick_up_QR").addEventListener('click',()=>{
+
+            var prtContent = document.querySelector(".img_qr_code");
+            var WinPrint = window.open('', '', 'left=0,top=50,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+            WinPrint.document.write(prtContent.innerHTML);
+            WinPrint.document.close();
+            WinPrint.focus();
+            WinPrint.print();
+            WinPrint.close();
+
+        },false);
+        
     }
 
 }
@@ -289,6 +305,7 @@ let product_pick_up_setup = new product_pick_up();
     product_pick_up_setup.receiver_image_upload();
     product_pick_up_setup.receiver_details_update();
     product_pick_up_setup.qrCodeGenerator();
+    product_pick_up_setup.print_qr_code();
 
 
 

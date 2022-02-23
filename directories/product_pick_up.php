@@ -110,14 +110,13 @@
         
         <input type="text" name="r_qr_code_string" placeholder="URL qr strings" id="text" class="qr_code_container">
 
-        <button class="print_qr_pdf">Print QR</button>
+        <button class="print_qr_pdf product_pick_up_QR">Print QR</button>
         <button name="" class="product_delivery_submit_btn receiver_details_submit_btn"> Submit </button>
 
         <div class="form_loader"></div>
 
         <div class="product_form_notifier receiver_form_notifier"> </div>
 
-        <label for="next_btn" class="next_btn"> next >> </label>
     </form>
 
 
